@@ -1,22 +1,20 @@
-import { Link } from "react-router-dom";
-import css from "./NotFoundPage.module.css";
-import { useTranslation } from "react-i18next";
+import { Link } from 'react-router-dom';
+import css from './NotFoundPage.module.css';
 
 const NotFound = () => {
-  const { t } = useTranslation();
   return (
     <div className={css.main}>
       <Link
         style={{
-          border: "1px solid #ccc",
-          padding: "5px 10px",
-          borderRadius: "15px",
+          border: '1px solid #ccc',
+          padding: '5px 10px',
+          borderRadius: '15px',
         }}
-        to={"/"}
+        to={'/'}
       >
-        {t("page.NotFoundPage.linkBack")}
+        Back
       </Link>
-      <h2>{t("page.NotFoundPage.oopsTitle")}</h2>
+      <h2>Not Found page</h2>
     </div>
   );
 };

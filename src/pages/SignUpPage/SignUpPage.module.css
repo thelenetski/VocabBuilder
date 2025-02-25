@@ -8,11 +8,11 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 12px;
 }
 
 .kids img {
   width: 247px;
+  margin-top: -24px;
 }
 
 .actionsItems {

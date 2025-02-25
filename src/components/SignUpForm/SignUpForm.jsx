@@ -105,7 +105,12 @@ const SignUpForm = () => {
             )}
           </button>
           {errors.password && (
-            <p className={css.error}>{errors.password.message}</p>
+            <div className={css.errorWrap}>
+              <svg className={css.warningIcon}>
+                <use href={sprite + '#warning'}></use>
+              </svg>
+              <p className={css.error}>{errors.password.message}</p>
+            </div>
           )}
         </div>
 

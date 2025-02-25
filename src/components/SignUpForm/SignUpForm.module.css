@@ -52,13 +52,23 @@
 
 .input:focus {
   outline: none;
-  border: 1px solid #1214176e;
+  border: 1px solid rgba(133, 170, 159, 1);
+}
+
+.errorWrap {
 }
 
 .error {
-  color: red;
+  color: var(--error-color);
   font-size: 12px;
   margin-top: 4px;
+}
+
+.warningIcon {
+  display: inline;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
 }
 
 .passwordGroup {

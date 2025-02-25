@@ -1,6 +1,7 @@
 import Logo from '../../components/Logo/Logo';
 import css from './SignUpPage.module.css';
 import kids from '../../assets/images/illustration.png';
+import kids2x from '../../assets/images/illustration@2x.png';
 import SignUpForm from '../../components/SignUpForm/SignUpForm';
 
 const SignUpPage = () => {
@@ -8,7 +9,11 @@ const SignUpPage = () => {
     <main className={css.signUpPage}>
       <Logo type={'black'} />
       <div className={css.kids}>
-        <img src={kids} alt="kids illustration" />
+        <img
+          src={kids}
+          srcSet={`${kids} 1x, ${kids2x} 2x`}
+          alt="kids illustration"
+        />
       </div>
       <SignUpForm />
       <div className={css.actionsItems}>
