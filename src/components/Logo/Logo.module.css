@@ -1,0 +1,28 @@
+.logoWrap {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logoIcon {
+  width: 36px;
+  height: 36px;
+}
+
+.logoWhite .logoIcon {
+  width: 40px;
+  height: 40px;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--second-color);
+}
+
+.logoWhite h4 {
+  color: var(--light-color);
+  font-size: 22px;
+  line-height: 32px;
+}

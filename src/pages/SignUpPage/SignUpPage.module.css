@@ -1,0 +1,48 @@
+.signUpPage {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.kids {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.kids img {
+  width: 247px;
+}
+
+.actionsItems {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.actionsItems span {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 19.32px;
+  text-align: center;
+  color: var(--second-color);
+}
+
+.actionsItems span:not(:last-child)::after {
+  content: '•';
+  margin: 0 7px;
+}
+
+@media (min-width: 375px) {
+  .signUpPage {
+  }
+}
+
+@media (min-width: 768px) {
+  .actionsItems {
+    display: flex;
+  }
+}

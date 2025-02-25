@@ -1,0 +1,123 @@
+.signUpContainer {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 16px;
+  background-color: rgba(133, 170, 159, 0.1);
+  border-radius: 25px 25px 0 0;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 32px;
+  letter-spacing: -0.6px;
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--second-color);
+  opacity: 0.8;
+}
+
+.formGroup {
+  margin-bottom: 14px;
+}
+
+.input {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 15px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--second-color);
+  background: none;
+  transition: 0.3s;
+}
+
+.input::placeholder {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #121417;
+}
+
+.input:focus {
+  outline: none;
+  border: 1px solid #1214176e;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.passwordGroup {
+  position: relative;
+}
+
+.togglePassword {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 19px;
+  top: 19px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.togglePassword svg {
+  width: 20px;
+  height: 20px;
+  transition: 0.3s;
+}
+
+.togglePassword svg:hover {
+  transform: scale(1.05);
+}
+
+.signUpButton {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--main-color);
+  color: var(--light-color);
+  border: none;
+  border-radius: 30px;
+  font-family: MacPaw Fixel Display, Arial;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  cursor: pointer;
+  margin-top: 32px;
+  transition: 0.3s;
+}
+
+.signUpButton:hover {
+  background-color: var(--hover-color);
+}
+
+.link {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: underline;
+  color: rgba(18, 20, 23, 0.5);
+  margin: 16px 0 25px;
+}
