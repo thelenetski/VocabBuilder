@@ -6,9 +6,12 @@ import Loader from './components/Loader/Loader.jsx';
 import MainLayout from './components/MainLayout/MainLayout.jsx';
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import DictionaryPage from './pages/DictionaryPage/DictionaryPage.jsx';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage.jsx'));
+const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
@@ -21,9 +24,27 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/signup"
+          path="/register"
           element={
-            <RestrictedRoute component={<SignUpPage />} redirectTo="/tracker" />
+            <RestrictedRoute
+              component={<SignUpPage />}
+              redirectTo="/dictionary"
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute
+              component={<SignInPage />}
+              redirectTo="/dictionary"
+            />
+          }
+        />
+        <Route
+          path="/dictionary"
+          element={
+            <PrivateRoute component={<DictionaryPage />} redirectTo="/login" />
           }
         />
         <Route path="*" element={<NotFoundPage />} />

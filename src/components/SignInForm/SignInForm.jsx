@@ -2,19 +2,15 @@ import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import css from './SignUpForm.module.css';
+import css from './SignInForm.module.css';
 import sprite from '/sprite.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { signUp } from '../../redux/auth/operations';
+import { signIn } from '../../redux/auth/operations';
 import { selectAuthLoading } from '../../redux/auth/selectors';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const schema = yup.object().shape({
-  name: yup
-    .string()
-    .min(3, 'Name must be at least 3 characters')
-    .required('Name is required'),
   email: yup
     .string()
     .matches(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/, 'Please enter a valid email')
@@ -28,7 +24,7 @@ const schema = yup.object().shape({
     .required('Password is required'),
 });
 
-const SignUpForm = () => {
+const SignInForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [passwordSuccess, setPasswordSuccess] = useState(false);
   const dispatch = useDispatch();
@@ -48,10 +44,10 @@ const SignUpForm = () => {
   const passwordValue = watch('password');
 
   const onSubmit = data => {
-    dispatch(signUp(data))
+    dispatch(signIn(data))
       .unwrap()
       .then(() => {
-        toast.success('Register successfully!');
+        toast.success('Login successfully!');
       })
       .catch(e => {
         toast.error(e.message);
@@ -70,30 +66,12 @@ const SignUpForm = () => {
   }, [passwordValue, trigger]);
 
   return (
-    <div className={css.signUpContainer}>
-      <h1 className={css.title}>Register</h1>
+    <div className={css.signInContainer}>
+      <h1 className={css.title}>Login</h1>
       <p className={css.description}>
-        To start using our services, please fill out the registration form
-        below. All fields are mandatory:
+        Please enter your login details to continue using our service:
       </p>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
-        <div className={css.formGroup}>
-          <input
-            id="name"
-            {...register('name')}
-            placeholder="Name"
-            className={css.input}
-          />
-          {errors.name && (
-            <div className={css.errorWrap}>
-              <svg className={css.warningIcon}>
-                <use href={sprite + '#warning'}></use>
-              </svg>
-              <p className={css.error}>{errors.name.message}</p>
-            </div>
-          )}
-        </div>
-
         <div className={css.formGroup}>
           <input
             id="email"
@@ -161,15 +139,15 @@ const SignUpForm = () => {
           )}
         </div>
 
-        <button type="submit" className={css.signUpButton}>
-          {loading.signUp ? 'Loading...' : 'Register'}
+        <button type="submit" className={css.signInButton}>
+          {loading.signUp ? 'Loading...' : 'Login'}
         </button>
-        <Link to="/login" className={css.link}>
-          Login
+        <Link to="/register" className={css.link}>
+          Register
         </Link>
       </form>
     </div>
   );
 };
 
-export default SignUpForm;
+export default SignInForm;

@@ -1,0 +1,121 @@
+.menuIcon {
+  width: 30px;
+  height: 18px;
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: end;
+  padding: 0;
+}
+
+.menuIcon .menuIconFrame {
+  width: 100%;
+  height: 2px;
+  background-color: var(--second-color);
+  border-radius: 2px;
+}
+
+.menuIcon .menuIconFrame:nth-child(2) {
+  width: 70%;
+}
+
+.menuWrap {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 185px;
+  height: 100vh;
+  padding: 16px;
+  background-color: var(--main-color);
+  transition: 1s;
+  overflow: hidden;
+}
+
+.headWrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.userInfo p {
+  color: var(--light-color);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--light-color);
+  border-radius: 100%;
+}
+
+.userAvatar {
+  width: 14px;
+  height: 14px;
+  color: var(--main-color);
+}
+
+.close {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.close svg {
+  width: 32px;
+  height: 32px;
+}
+
+.linksWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: -100px;
+}
+
+.linksWrap a {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19.32px;
+  color: var(--light-color);
+  text-decoration: none;
+}
+
+.linksWrap svg {
+  width: 16px;
+  height: 16px;
+  margin-left: 6px;
+}
+
+.linksWrap .active {
+  padding: 12px 20px;
+  color: var(--second-color);
+  background-color: var(--light-color);
+  border-radius: 15px;
+}
+
+.kids {
+  display: flex;
+  justify-content: center;
+  height: 275px;
+}
+
+.kids img {
+  width: 363px;
+  margin-right: -20px;
+  object-fit: cover;
+}

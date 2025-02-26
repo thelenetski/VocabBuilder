@@ -7,6 +7,15 @@
   src: url('./assets/fonts/FixelDisplay-Light.otf') format('truetype');
 }
 
+/* fixel-medium */
+@font-face {
+  font-display: swap;
+  font-family: 'MacPaw Fixel Display';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./assets/fonts/FixelDisplay-Medium.otf') format('truetype');
+}
+
 /* fixel-bold */
 @font-face {
   font-display: swap;

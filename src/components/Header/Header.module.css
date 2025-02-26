@@ -1,0 +1,36 @@
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  padding: 16px;
+}
+
+.userAccountWrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.userAccountWrap p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: capitalize;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: var(--main-color);
+  border-radius: 100%;
+}
+
+.userAvatar {
+  width: 14px;
+  height: 14px;
+  color: rgba(252, 252, 252, 0.7);
+}
