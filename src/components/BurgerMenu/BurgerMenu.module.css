@@ -34,6 +34,7 @@
   background-color: var(--main-color);
   transition: 1s;
   overflow: hidden;
+  z-index: 9999;
 }
 
 .headWrap {

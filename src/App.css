@@ -1,3 +1,42 @@
 #root {
   margin: 0 auto;
 }
+
+.filterItemSelect__control {
+  width: 100%;
+  background-color: #00000000 !important;
+  border-radius: 15px !important;
+}
+
+.filterItemSelect__placeholder {
+  color: #121417;
+}
+
+.filterItemSelect__menu {
+  width: 100%;
+  min-width: 124px;
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: none;
+  padding: 14px 18px;
+}
+
+.filterItemSelect__menu-list {
+  padding: 0;
+}
+
+.filterItemSelect__option {
+  color: #121417;
+  padding: 4px 0;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.filterItemSelect__option--is-focused {
+  color: #121417;
+}
+
+.filterItemSelect__indicator-separator {
+  display: none;
+}

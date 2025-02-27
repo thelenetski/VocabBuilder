@@ -1,0 +1,30 @@
+.filterWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.filterBox {
+  width: 100%;
+  position: relative;
+}
+
+.filterBox P {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #8a8a89;
+  margin-bottom: 8px;
+}
+
+.filterBox span {
+  position: absolute;
+  top: 40px;
+  left: 35%;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.filterBox span:hover {
+  cursor: pointer;
+}
