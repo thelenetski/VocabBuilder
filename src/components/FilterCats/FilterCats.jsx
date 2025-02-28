@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from 'react-redux';
 import css from './FilterCats.module.css';
 import { setFilters } from '../../redux/words/slice';
-import { selectFilters } from '../../redux/words/selectors';
+import { selectCategories, selectFilters } from '../../redux/words/selectors';
 import sprite from '/sprite.svg';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const FilterCats = ({ data, name }) => {
+const FilterCats = ({ name }) => {
   const dispatch = useDispatch();
   const filters = useSelector(selectFilters);
   const [open, setOpen] = useState(false);
@@ -14,6 +14,7 @@ const FilterCats = ({ data, name }) => {
   const { register, handleSubmit, watch } = useForm({
     defaultValues: { isIrregular: 'false' },
   });
+  const categories = useSelector(selectCategories);
 
   const filterHandler = value => {
     if (value === 'verb') {
@@ -33,20 +34,22 @@ const FilterCats = ({ data, name }) => {
     setOpen(!open);
   };
 
-  const onSubmit = data => dispatch(setFilters({ ...filters, ...data }));
+  const onSubmit = data => {
+    dispatch(setFilters({ ...filters, ...data }));
+  };
 
   return (
     <>
       <div className={css.filterItemWrap}>
         <div className={css.filterList} onClick={() => setOpen(!open)}>
-          <p>{!catName ? name : catName}</p>
+          <p className={css.title}>{!catName ? name : catName}</p>
           <svg className={css.arrowDown}>
             <use href={sprite + '#arrow-down'}></use>
           </svg>
         </div>
         {open && (
           <ul className={css.catList}>
-            {data.map((item, index) => {
+            {categories.map((item, index) => {
               return (
                 <li key={index} onClick={() => filterHandler(item)}>
                   {item}
@@ -61,7 +64,7 @@ const FilterCats = ({ data, name }) => {
           <label>
             <input
               type="radio"
-              value={false}
+              value="false"
               {...register('isIrregular')}
               onChange={e =>
                 handleSubmit(() => onSubmit({ isIrregular: e.target.value }))()
@@ -72,7 +75,7 @@ const FilterCats = ({ data, name }) => {
           <label>
             <input
               type="radio"
-              value={true}
+              value="true"
               {...register('isIrregular')}
               onChange={e =>
                 handleSubmit(() => onSubmit({ isIrregular: e.target.value }))()

@@ -8,15 +8,15 @@
   position: relative;
 }
 
-.filterBox P {
+/* .filterBox P {
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   color: #8a8a89;
   margin-bottom: 8px;
-}
+} */
 
-.filterBox span {
+/* .filterBox span {
   position: absolute;
   top: 40px;
   left: 35%;
@@ -27,4 +27,4 @@
 
 .filterBox span:hover {
   cursor: pointer;
-}
+} */

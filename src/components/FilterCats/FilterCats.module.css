@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid rgba(18, 20, 23, 0.1);
   border-radius: 15px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
   padding: 14px 24px;
   position: relative;
 }
@@ -15,12 +15,12 @@
   align-items: center;
 }
 
-.filterItemWrap svg {
+svg {
   width: 20px;
   height: 20px;
 }
 
-.filterItemWrap p {
+.title {
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
@@ -28,7 +28,7 @@
   color: var(--second-color);
 }
 
-.filterItemWrap p::first-letter {
+.title::first-letter {
   text-transform: uppercase;
 }
 
@@ -67,7 +67,7 @@
   gap: 8px;
 }
 
-input[type='radio'] {
+.radioWrap label input[type='radio'] {
   appearance: none;
   width: 18px;
   height: 18px;
@@ -82,12 +82,11 @@ input[type='radio'] {
   line-height: 16.56px;
 }
 
-/* Стили для выбранной радио-кнопки */
-input[type='radio']:checked {
+.radioWrap label input[type='radio']:checked {
   border-color: var(--main-color);
 }
 
-input[type='radio']:checked::before {
+.radioWrap label input[type='radio']:checked::before {
   content: '';
   width: 10px;
   height: 10px;

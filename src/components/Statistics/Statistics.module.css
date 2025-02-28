@@ -1,0 +1,20 @@
+.statWrap {
+  display: flex;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19.32px;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.value {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 27.6px;
+  color: var(--second-color);
+  margin-left: 8px;
+}

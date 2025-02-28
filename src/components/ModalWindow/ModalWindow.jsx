@@ -1,10 +1,10 @@
-import Modal from "react-modal";
-import { useDispatch, useSelector } from "react-redux";
-import { closeModal } from "../../redux/modal/slice";
-import { selectIsOpenModal } from "../../redux/modal/selectors";
-import styles from "./ModalWindow.module.css";
-import { createPortal } from "react-dom";
-import { useEffect } from "react";
+import Modal from 'react-modal';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../../redux/modal/slice';
+import { selectIsOpenModal } from '../../redux/modal/selectors';
+import styles from './ModalWindow.module.css';
+import { createPortal } from 'react-dom';
+import { useEffect } from 'react';
 
 const ModalWindow = ({ children }) => {
   const dispatch = useDispatch();
@@ -16,8 +16,8 @@ const ModalWindow = ({ children }) => {
 
   useEffect(() => {
     isOpen
-      ? document.body.classList.add("no-scroll")
-      : document.body.classList.remove("no-scroll");
+      ? document.body.classList.add('no-scroll')
+      : document.body.classList.remove('no-scroll');
   }, [isOpen]);
 
   return createPortal(
@@ -31,13 +31,13 @@ const ModalWindow = ({ children }) => {
       >
         <button className={styles.btnClose} onClick={closeModalHandler}>
           <svg>
-            <use href="/sprite.svg#icon-x"></use>
+            <use href="/sprite.svg#close"></use>
           </svg>
         </button>
         <div className={styles.modalContent}>{children}</div>
       </Modal>
     </>,
-    document.getElementById("modal-root")
+    document.getElementById('modal-root')
   );
 };
 

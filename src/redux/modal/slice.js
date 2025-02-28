@@ -2,11 +2,8 @@ import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { logOut } from '../auth/operations';
 
 export const modalTypes = {
-  editUser: 'edit-user',
   confirmLogOutUser: 'confirm-logout-user',
-  editWater: 'edit-water',
-  addWater: 'add-water',
-  confirmDelete: 'confirm-delete',
+  addWord: 'add-word',
 };
 
 const modalSlice = createSlice({
@@ -17,29 +14,14 @@ const modalSlice = createSlice({
     content: null,
   },
   reducers: {
-    openEditUser(state, action) {
-      state.isOpen = true;
-      state.type = modalTypes.editUser;
-      state.content = action.payload;
-    },
     openConfirmLogOutUser(state, action) {
       state.isOpen = true;
       state.type = modalTypes.confirmLogOutUser;
       state.content = action.payload;
     },
-    openEditWater(state, action) {
+    openAddWord(state, action) {
       state.isOpen = true;
-      state.type = modalTypes.editWater;
-      state.content = action.payload;
-    },
-    openAddWater(state, action) {
-      state.isOpen = true;
-      state.type = modalTypes.addWater;
-      state.content = action.payload;
-    },
-    openConfirmDelete(state, action) {
-      state.isOpen = true;
-      state.type = modalTypes.confirmDelete;
+      state.type = modalTypes.addWord;
       state.content = action.payload;
     },
     closeModal(state) {
@@ -58,12 +40,6 @@ const modalSlice = createSlice({
 });
 
 // Експортуємо генератори екшенів та редюсер
-export const {
-  openEditUser,
-  openConfirmLogOutUser,
-  openEditWater,
-  openAddWater,
-  openConfirmDelete,
-  closeModal,
-} = modalSlice.actions;
+export const { openConfirmLogOutUser, openAddWord, closeModal } =
+  modalSlice.actions;
 export const modalReducer = modalSlice.reducer;

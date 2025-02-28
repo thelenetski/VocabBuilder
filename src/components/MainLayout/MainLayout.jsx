@@ -4,6 +4,8 @@ import { Toaster } from 'react-hot-toast';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import { useSelector } from 'react-redux';
 import { selectTypeModal } from '../../redux/modal/selectors';
+import { modalTypes } from '../../redux/modal/slice';
+import AddWordForm from '../AddWordForm/AddWordForm';
 
 const MainLayout = ({ children }) => {
   const type = useSelector(selectTypeModal);
@@ -15,7 +17,7 @@ const MainLayout = ({ children }) => {
           <Toaster position="top-center" />
           <Suspense fallback={<Loader />}>{children}</Suspense>
           <ModalWindow>
-            {/* {type === modalTypes.addWater && <WaterModal />} */}
+            {type === modalTypes.addWord && <AddWordForm />}
           </ModalWindow>
         </div>
       </div>
