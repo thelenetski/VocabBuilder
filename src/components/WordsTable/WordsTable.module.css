@@ -1,0 +1,75 @@
+.tableWrap {
+  margin: 0 16px 32px;
+  background-color: var(--light-color);
+  overflow: hidden;
+}
+
+.tableWrap table {
+  width: 100%;
+  border-radius: 8px;
+  border-collapse: collapse;
+  border: none;
+  overflow: hidden;
+}
+
+.tableTH {
+  text-align: start;
+  background-color: rgba(133, 170, 159, 0.1);
+  padding: 22px 0;
+  padding-left: 14px;
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22.08px;
+  border: 1px solid rgba(219, 219, 219, 1);
+}
+
+.iconTH {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconTH svg {
+  display: none;
+}
+
+.tableTD {
+  padding: 16px 0;
+  padding-left: 14px;
+  text-transform: capitalize;
+  border: 1px solid rgba(219, 219, 219, 1);
+  background-color: rgba(252, 252, 252, 1);
+}
+
+.tableWrap table .tableTD:first-child,
+.tableWrap table .tableTH:first-child {
+  border-left: none;
+}
+
+.tableWrap table .tableTD:last-child,
+.tableWrap table .tableTH:last-child {
+  border-right: none;
+}
+
+.tableWrap table tr:first-child .tableTD,
+.tableWrap table tr:first-child .tableTH {
+  border-top: none;
+}
+
+.tableWrap table tr:last-child .tableTD,
+.tableWrap table tr:last-child .tableTH {
+  border-bottom: none;
+}
+
+.progress {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-left: -14px;
+}
+
+.progress svg {
+  width: 24px;
+  height: 24px;
+}

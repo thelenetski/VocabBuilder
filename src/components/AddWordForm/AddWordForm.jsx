@@ -53,14 +53,14 @@ const AddWordForm = () => {
 
   const handleDebouncedChangeUa = useCallback(
     debounce(e => {
-      onSubmit({ ua: e.target.value });
+      onSubmit({ ua: String(e.target.value).toLowerCase() });
     }, 300),
     [word]
   );
 
   const handleDebouncedChangeEn = useCallback(
     debounce(e => {
-      onSubmit({ en: e.target.value });
+      onSubmit({ en: String(e.target.value).toLowerCase() });
     }, 300),
     [word]
   );
