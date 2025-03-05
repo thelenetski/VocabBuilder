@@ -1,0 +1,44 @@
+.paginationWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.paginationWrap .button {
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 8px;
+  padding: 0;
+}
+
+.paginationWrap .button svg {
+  width: 16px;
+  height: 16px;
+}
+
+.arrowBtn {
+  padding: 4px;
+}
+
+.rightBtn,
+.lastPage {
+  transform: rotate(180deg);
+}
+
+.paginationWrap .currentPage {
+  background: var(--main-color);
+  border: none;
+  color: var(--light-color);
+  font-family: MacPaw Fixel Display;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 17.94px;
+}

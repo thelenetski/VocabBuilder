@@ -24,6 +24,10 @@
   border: 1px solid rgba(219, 219, 219, 1);
 }
 
+.cellPadding {
+  padding-left: 14px;
+}
+
 .iconTH {
   display: flex;
   align-items: center;
@@ -36,7 +40,7 @@
 
 .tableTD {
   padding: 16px 0;
-  padding-left: 14px;
+
   text-transform: capitalize;
   border: 1px solid rgba(219, 219, 219, 1);
   background-color: rgba(252, 252, 252, 1);
@@ -62,14 +66,34 @@
   border-bottom: none;
 }
 
+.tableWrap table .tableTD:last-child,
+.tableWrap table .tableTH:last-child {
+  width: 50px;
+  padding: 0;
+}
+
 .progress {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-left: -14px;
 }
 
 .progress svg {
   width: 24px;
   height: 24px;
+}
+
+.popover {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.WordPopoverMenuTxt {
+  font-family: MacPaw Fixel Display;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22.08px;
+  text-align: center;
+  color: #12141780;
 }

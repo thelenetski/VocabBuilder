@@ -1,0 +1,24 @@
+.wordPopMenuWrap {
+  padding: 12px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wordPopMenuWrap button {
+  border: none;
+  background: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 19.32px;
+}
+
+.wordPopMenuWrap svg {
+  width: 16px;
+  height: 16px;
+}

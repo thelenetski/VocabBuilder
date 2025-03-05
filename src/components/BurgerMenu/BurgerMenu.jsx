@@ -8,6 +8,7 @@ import sprite from '/sprite.svg';
 import { Link, useLocation } from 'react-router-dom';
 import kids from '../../assets/images/illustration.png';
 import kids2x from '../../assets/images/illustration@2x.png';
+import clsx from 'clsx';
 
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,19 +73,23 @@ const BurgerMenu = () => {
           <div className={css.linksWrap}>
             <Link
               to="/dictionary"
-              className={location.pathname === '/dictionary' && css.active}
+              className={clsx(
+                location.pathname === '/dictionary' && css.active
+              )}
             >
               Dictionary
             </Link>
             <Link
               to="/recommended"
-              className={location.pathname === '/recommended' && css.active}
+              className={clsx(
+                location.pathname === '/recommended' && css.active
+              )}
             >
               Recommended
             </Link>
             <Link
               to="/training"
-              className={location.pathname === '/training' && css.active}
+              className={clsx(location.pathname === '/training' && css.active)}
             >
               Training
             </Link>

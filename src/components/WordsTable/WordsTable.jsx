@@ -12,6 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Circle } from 'rc-progress';
 import { Button, Popover } from '@mui/material';
 import { useState } from 'react';
+import WordPopoverMenu from '../WordPopoverMenu/WordPopoverMenu';
 
 const WordsTable = () => {
   const { results } = useSelector(selectAllWords);
@@ -20,7 +21,12 @@ const WordsTable = () => {
   const [popoverId, setPopoverId] = useState(null);
 
   const handleClick = (event, id) => {
-    setAnchorEl(event.currentTarget);
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    setAnchorEl({
+      getBoundingClientRect: () => rect,
+      nodeType: 1,
+    });
     setPopoverId(id);
   };
 
@@ -31,7 +37,9 @@ const WordsTable = () => {
   const columnHelper = createColumnHelper();
   const columns = [
     columnHelper.accessor('en', {
-      cell: info => info.getValue(),
+      cell: info => {
+        return <div className={css.cellPadding}>{info.getValue()}</div>;
+      },
       header: () => {
         return (
           <div className={css.iconTH}>
@@ -44,7 +52,9 @@ const WordsTable = () => {
       },
     }),
     columnHelper.accessor('ua', {
-      cell: info => info.getValue(),
+      cell: info => {
+        return <div className={css.cellPadding}>{info.getValue()}</div>;
+      },
       header: () => {
         return (
           <div className={css.iconTH}>
@@ -60,17 +70,15 @@ const WordsTable = () => {
       header: () => <span>Progress</span>,
       cell: info => {
         return (
-          <>
-            <div className={css.progress}>
-              <Circle
-                percent={info.getValue()}
-                strokeWidth={10}
-                strokeColor="rgba(43, 214, 39, 1)"
-                trailWidth={10}
-                trailColor="rgba(212, 248, 211, 1)"
-              />
-            </div>
-          </>
+          <div className={css.progress}>
+            <Circle
+              percent={info.getValue()}
+              strokeWidth={10}
+              strokeColor="rgba(43, 214, 39, 1)"
+              trailWidth={10}
+              trailColor="rgba(212, 248, 211, 1)"
+            />
+          </div>
         );
       },
     }),
@@ -78,16 +86,17 @@ const WordsTable = () => {
       header: () => '',
       cell: info => {
         return (
-          <>
-            <div className={css.popover}>
-              <Button
-                size="small"
-                onClick={event => handleClick(event, info.getValue())}
-              >
-                ...
-              </Button>
-            </div>
-          </>
+          <div className={css.popover}>
+            <Button
+              aria-describedby={info.getValue()}
+              className={css.popoverBtn}
+              size="small"
+              onClick={event => handleClick(event, info.getValue())}
+              sx={{ p: 0 }}
+            >
+              <span className={css.WordPopoverMenuTxt}>...</span>
+            </Button>
+          </div>
         );
       },
     }),
@@ -139,18 +148,29 @@ const WordsTable = () => {
               </tr>
             ))}
           </tbody>
-          <Popover
-            open={Boolean(anchorEl)}
-            anchorEl={anchorEl || undefined}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-          >
-            <div>{popoverId}</div>
-          </Popover>
         </table>
+        <Popover
+          id={popoverId}
+          open={Boolean(anchorEl)}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+          sx={{
+            '& .MuiPaper-root': {
+              borderRadius: '15px',
+              boxShadow: '0 4px 47px rgba(18, 20, 23, 0.08)',
+            },
+          }}
+        >
+          <WordPopoverMenu id={popoverId} />
+        </Popover>
       </div>
     )
   );

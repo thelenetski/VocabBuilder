@@ -7,3 +7,22 @@
   margin-top: 8px;
   gap: 16px;
 }
+
+.trainLink {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: none;
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--second-color);
+  padding: 0;
+  text-decoration: none;
+}
+
+.trainLinkIcon {
+  stroke: var(--main-color);
+}

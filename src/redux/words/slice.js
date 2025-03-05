@@ -1,9 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   createWord,
+  deleteWord,
   getAllWords,
   getCategories,
   getOwnWords,
+  getStatistics,
 } from './operations';
 
 const handlePending = state => {
@@ -21,6 +23,7 @@ const wordsSlice = createSlice({
     items: {},
     categories: [],
     filters: {},
+    stats: null,
     loading: false,
     error: null,
   },
@@ -49,6 +52,13 @@ const wordsSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllWords.rejected, handleRejected)
+      .addCase(getStatistics.pending, handlePending)
+      .addCase(getStatistics.fulfilled, (state, action) => {
+        state.stats = action.payload;
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(getStatistics.rejected, handleRejected)
       .addCase(getOwnWords.pending, handlePending)
       .addCase(getOwnWords.fulfilled, (state, action) => {
         state.items = action.payload;
@@ -62,7 +72,20 @@ const wordsSlice = createSlice({
         state.loading = false;
         state.error = null;
       })
-      .addCase(createWord.rejected, handleRejected);
+      .addCase(createWord.rejected, handleRejected)
+      .addCase(deleteWord.pending, handlePending)
+      .addCase(deleteWord.fulfilled, (state, action) => {
+        const index = state.items.results.findIndex(
+          word => word._id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items.results.splice(index, 1);
+        }
+
+        state.loading = false;
+        state.error = null;
+      })
+      .addCase(deleteWord.rejected, handleRejected);
   },
 });
 

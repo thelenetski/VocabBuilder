@@ -4,6 +4,7 @@ import { logOut } from '../auth/operations';
 export const modalTypes = {
   confirmLogOutUser: 'confirm-logout-user',
   addWord: 'add-word',
+  editWord: 'edit-word',
 };
 
 const modalSlice = createSlice({
@@ -24,6 +25,11 @@ const modalSlice = createSlice({
       state.type = modalTypes.addWord;
       state.content = action.payload;
     },
+    openEditWord(state, action) {
+      state.isOpen = true;
+      state.type = modalTypes.editWord;
+      state.content = action.payload;
+    },
     closeModal(state) {
       state.isOpen = false;
       state.type = null;
@@ -40,6 +46,6 @@ const modalSlice = createSlice({
 });
 
 // Експортуємо генератори екшенів та редюсер
-export const { openConfirmLogOutUser, openAddWord, closeModal } =
+export const { openConfirmLogOutUser, openAddWord, openEditWord, closeModal } =
   modalSlice.actions;
 export const modalReducer = modalSlice.reducer;
