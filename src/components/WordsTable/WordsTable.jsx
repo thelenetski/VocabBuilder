@@ -11,14 +11,16 @@ import sprite from '/sprite.svg';
 import { useMediaQuery } from 'react-responsive';
 import { Circle } from 'rc-progress';
 import { Button, Popover } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import WordPopoverMenu from '../WordPopoverMenu/WordPopoverMenu';
+import { selectIsOpenModal } from '../../redux/modal/selectors';
 
 const WordsTable = () => {
   const { results } = useSelector(selectAllWords);
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const [anchorEl, setAnchorEl] = useState(null);
   const [popoverId, setPopoverId] = useState(null);
+  const isModalOpen = useSelector(selectIsOpenModal);
 
   const handleClick = (event, id) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -33,6 +35,10 @@ const WordsTable = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  useEffect(() => {
+    handleClose();
+  }, [results, isModalOpen]);
 
   const columnHelper = createColumnHelper();
   const columns = [

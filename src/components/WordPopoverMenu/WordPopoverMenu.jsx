@@ -3,12 +3,21 @@ import css from './WordPopoverMenu.module.css';
 import sprite from '/sprite.svg';
 import { openEditWord } from '../../redux/modal/slice';
 import { deleteWord } from '../../redux/words/operations';
+import toast from 'react-hot-toast';
 
 const WordPopoverMenu = ({ id }) => {
   const dispatch = useDispatch();
 
   const handlerEdit = () => {
     dispatch(openEditWord(id));
+  };
+
+  const handlerDelete = () => {
+    dispatch(deleteWord(id))
+      .unwrap()
+      .then(() => {
+        toast.success('Word deleted successfully');
+      });
   };
 
   return (
@@ -19,7 +28,7 @@ const WordPopoverMenu = ({ id }) => {
         </svg>
         <span>Edit</span>
       </button>
-      <button onClick={() => dispatch(deleteWord(id))}>
+      <button onClick={handlerDelete}>
         <svg>
           <use href={sprite + '#trashGreen'}></use>
         </svg>
