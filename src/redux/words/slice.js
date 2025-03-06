@@ -6,6 +6,7 @@ import {
   getCategories,
   getOwnWords,
   getStatistics,
+  patchWord,
 } from './operations';
 
 const handlePending = state => {
@@ -73,6 +74,20 @@ const wordsSlice = createSlice({
         state.error = null;
       })
       .addCase(createWord.rejected, handleRejected)
+      .addCase(patchWord.pending, state => {
+        state.loading = true;
+      })
+      .addCase(patchWord.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        state.items.results = state.items.results.map(word => {
+          if (word && word._id === action.payload._id) {
+            return action.payload;
+          }
+          return word;
+        });
+      })
+      .addCase(patchWord.rejected, handleRejected)
       .addCase(deleteWord.pending, handlePending)
       .addCase(deleteWord.fulfilled, (state, action) => {
         const index = state.items.results.findIndex(

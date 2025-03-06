@@ -1,21 +1,11 @@
-.AddWordFormWrap {
+.EditWordFormWrap {
   display: flex;
   flex-direction: column;
   gap: 16px;
   background: none;
 }
 
-.title {
-  font-family: MacPaw Fixel Display;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 28px;
-  letter-spacing: -0.48px;
-  color: var(--light-color);
-}
-
-.regularTxt,
-.catTitleWhite {
+.regularTxt {
   font-family: MacPaw Fixel Display;
   font-weight: 400;
   font-size: 16px;
@@ -40,90 +30,24 @@
   align-items: center;
 }
 
-svg {
-  width: 20px;
-  height: 20px;
+.formWrap svg {
+  width: 28px;
+  height: 28px;
   color: var(--light-color);
 }
 
-.catTitle {
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin: 0;
-  color: var(--second-color);
-}
-
-.catTitle::first-letter {
-  text-transform: uppercase;
-}
-
-.catList {
-  position: absolute;
-  top: 55px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  background-color: white;
-  padding: 12px 24px;
-  border-radius: 15px;
-  box-shadow: 0 4px 47px rgba(18, 20, 23, 0.08);
-  z-index: 10;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-}
-
-.catList li::first-letter {
-  text-transform: uppercase;
-}
-
-.radioWrap {
+.formWrap {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 16px;
-  margin-top: -8px;
 }
 
-.radioWrap label {
+.formWrap label {
   display: flex;
   align-items: center;
   gap: 8px;
   color: var(--light-color);
-}
-
-input[type='radio'] {
-  appearance: none;
-  width: 18px;
-  height: 18px;
-  border: 2px solid var(--light-color);
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  margin: 0;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16.56px;
-}
-
-input[type='radio']:checked {
-  border-color: var(--light-color);
-}
-
-input[type='radio']:checked::before {
-  content: '';
-  width: 10px;
-  height: 10px;
-  background-color: var(--light-color);
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 .langTitle {
@@ -131,7 +55,6 @@ input[type='radio']:checked::before {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 16px;
   margin-bottom: -8px;
 }
 

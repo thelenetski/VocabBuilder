@@ -22,8 +22,14 @@ const DictionaryPage = () => {
     <div className={css.wrapper}>
       <Header />
       <Dashboard />
-      {loading ? <Loader /> : <WordsTable />}
-      <WordsPagination />
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          <WordsTable />
+          <WordsPagination />
+        </>
+      )}
     </div>
   );
 };

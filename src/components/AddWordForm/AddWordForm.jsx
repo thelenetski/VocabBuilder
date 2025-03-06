@@ -7,14 +7,36 @@ import { selectCategories } from '../../redux/words/selectors';
 import debounce from 'lodash.debounce';
 import { createWord } from '../../redux/words/operations';
 import { closeModal } from '../../redux/modal/slice';
+import toast from 'react-hot-toast';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const schema = yup.object().shape({
+  ua: yup
+    .string()
+    .matches(/^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\s]+$/u, 'Please enter a valid word')
+    .required('Field is required'),
+  en: yup
+    .string()
+    .matches(/\b[A-Za-z'-]+(?:\s+[A-Za-z'-]+)*\b/, 'Please enter a valid word')
+    .required('Field is required'),
+  category: yup.string().required('Category is required'),
+});
 
 const AddWordForm = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [catName, setCatName] = useState(null);
   const [word, setWord] = useState({});
-  const { register, handleSubmit, watch } = useForm({
-    defaultValues: { isIrregular: 'false' },
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm({
+    defaultValues: { isIrregular: 'false', category: '' },
+    resolver: yupResolver(schema),
   });
   const categories = useSelector(selectCategories);
 
@@ -33,7 +55,7 @@ const AddWordForm = () => {
         category: value,
       });
     }
-
+    setValue('category', value, { shouldValidate: true });
     setCatName(value);
     setOpen(!open);
   };
@@ -45,7 +67,7 @@ const AddWordForm = () => {
         await dispatch(createWord(word));
         await dispatch(closeModal());
       } catch (e) {
-        console.log(e);
+        toast.error(e.message);
       }
     };
     init();
@@ -53,14 +75,14 @@ const AddWordForm = () => {
 
   const handleDebouncedChangeUa = useCallback(
     debounce(e => {
-      onSubmit({ ua: String(e.target.value).toLowerCase() });
+      onSubmit({ ua: String(e.target.value).toLowerCase().trim() });
     }, 300),
     [word]
   );
 
   const handleDebouncedChangeEn = useCallback(
     debounce(e => {
-      onSubmit({ en: String(e.target.value).toLowerCase() });
+      onSubmit({ en: String(e.target.value).toLowerCase().trim() });
     }, 300),
     [word]
   );
@@ -68,14 +90,16 @@ const AddWordForm = () => {
   return (
     <div className={css.AddWordFormWrap}>
       <h4 className={css.title}>Add word</h4>
-      <p>
+      <p className={css.regularTxt}>
         Adding a new word to the dictionary is an important step in enriching
         the language base and expanding the vocabulary.
       </p>
       <>
         <div className={css.filterItemWrap}>
           <div className={css.filterList} onClick={() => setOpen(!open)}>
-            <p className={css.catTitle}>{!catName ? 'Categories' : catName}</p>
+            <p className={css.catTitleWhite}>
+              {!catName ? 'Categories' : catName}
+            </p>
             <svg className={css.arrowDown}>
               <use href={sprite + '#arrow-down'}></use>
             </svg>
@@ -92,6 +116,9 @@ const AddWordForm = () => {
             </ul>
           )}
         </div>
+        {errors.category && (
+          <p className={css.error}>{errors.category.message}</p>
+        )}
 
         <form className={css.radioWrap} onSubmit={handleSubmit(onSubmit)}>
           {catName === 'verb' && (
@@ -109,6 +136,7 @@ const AddWordForm = () => {
                 />
                 Regular
               </label>
+
               <label>
                 <input
                   type="radio"
@@ -128,7 +156,7 @@ const AddWordForm = () => {
             <svg className={css.flag}>
               <use href={sprite + '#flag-ua'}></use>
             </svg>
-            <p>Ukrainian</p>
+            <p className={css.regularTxt}>Ukrainian</p>
           </div>
           <label className={css.langInput}>
             <input
@@ -137,11 +165,12 @@ const AddWordForm = () => {
               onChange={handleDebouncedChangeUa}
             />
           </label>
+          {errors.ua && <p className={css.error}>{errors.ua.message}</p>}
           <div className={css.langTitle}>
             <svg className={css.flag}>
               <use href={sprite + '#flag-uk'}></use>
             </svg>
-            <p>English</p>
+            <p className={css.regularTxt}>English</p>
           </div>
           <label className={css.langInput}>
             <input
@@ -150,6 +179,7 @@ const AddWordForm = () => {
               onChange={handleDebouncedChangeEn}
             />
           </label>
+          {errors.en && <p className={css.error}>{errors.en.message}</p>}
           <div className={css.controls}>
             <button
               type="submit"
@@ -163,7 +193,7 @@ const AddWordForm = () => {
               className={css.closeBtn}
               onClick={() => dispatch(closeModal())}
             >
-              Close
+              Cancel
             </button>
           </div>
         </form>
