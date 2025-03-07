@@ -100,7 +100,7 @@ const WordsTable = () => {
               onClick={event => handleClick(event, info.getValue())}
               sx={{ p: 0 }}
             >
-              <span className={css.WordPopoverMenuTxt}>...</span>
+              <span className={css.WordPopoverMenuTxt}>•••</span>
             </Button>
           </div>
         );
