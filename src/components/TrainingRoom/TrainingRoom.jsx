@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { sendAnswers } from '../../redux/training/operations';
 import { openWellDone } from '../../redux/modal/slice';
 import ProgressBar from '../ProgressBar/ProgressBar';
+import { Link } from 'react-router-dom';
 
 const TrainingRoom = ({ data }) => {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const TrainingRoom = ({ data }) => {
 
   const percent = Math.round((currentIndex / tasksEN.length) * 100);
 
-  console.log(answers);
+  console.log(tasksEN);
 
   return (
     <>
@@ -100,9 +101,9 @@ const TrainingRoom = ({ data }) => {
             <button type="submit" className={css.addBtn}>
               Save
             </button>
-            <button type="button" className={css.closeBtn}>
+            <Link to="/dictionary" className={css.closeBtn}>
               Cancel
-            </button>
+            </Link>
           </div>
         </form>
       </div>

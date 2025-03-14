@@ -113,8 +113,10 @@
   font-family: MacPaw Fixel Display;
   font-weight: 700;
   font-size: 16px;
+  text-align: center;
   line-height: 100%;
   color: var(--second-color);
   opacity: 0.5;
   margin-top: 8px;
+  text-decoration: none;
 }
