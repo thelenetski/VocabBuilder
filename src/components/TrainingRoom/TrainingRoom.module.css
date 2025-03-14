@@ -1,0 +1,119 @@
+.roomWrap {
+  padding: 0 16px;
+}
+
+.roomForm {
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.roomTask {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 195px;
+  padding: 22px;
+}
+
+.roomTask:first-child {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.roomTitle {
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  color: var(--second-color);
+}
+
+.langInput {
+  height: 50%;
+}
+
+.langInput input,
+.taskText {
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--second-color);
+  border: none;
+  background: none;
+  text-transform: capitalize;
+}
+
+.langInput input:focus {
+  outline: none;
+}
+
+.roomFormfooter {
+  display: flex;
+  justify-content: space-between;
+}
+
+.roomFormFooterLang {
+  display: flex;
+  gap: 8px;
+}
+
+.regularTxt {
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--second-color);
+}
+
+.nextBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--second-color);
+  opacity: 0.5;
+}
+
+.arrow {
+  width: 20px;
+  height: 20px;
+  stroke: var(--main-color);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 150px;
+}
+
+.addBtn {
+  border: none;
+  background: var(--main-color);
+  border-radius: 30px;
+  font-family: MacPaw Fixel Display;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 16px 0;
+  color: var(--light-color);
+}
+
+.closeBtn {
+  border: none;
+  background: none;
+  font-family: MacPaw Fixel Display;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 100%;
+  color: var(--second-color);
+  opacity: 0.5;
+  margin-top: 8px;
+}

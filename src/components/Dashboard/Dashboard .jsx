@@ -5,11 +5,12 @@ import AddWordBtn from '../AddWordBtn/AddWordBtn';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getCategories } from '../../redux/words/operations';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import sprite from '/sprite.svg';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(getCategories());
@@ -20,7 +21,7 @@ const Dashboard = () => {
       <FilterPanel />
       <Statistics />
       <div className={css.actions}>
-        <AddWordBtn />
+        {location.pathname === '/dictionary' && <AddWordBtn />}
         <Link className={css.trainLink} to="/training">
           <span>Train oneself</span>
           <svg className={css.trainLinkIcon}>

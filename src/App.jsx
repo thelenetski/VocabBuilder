@@ -7,12 +7,20 @@ import MainLayout from './components/MainLayout/MainLayout.jsx';
 import { Route, Routes } from 'react-router-dom';
 import RestrictedRoute from './components/RestrictedRoute/RestrictedRoute';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import DictionaryPage from './pages/DictionaryPage/DictionaryPage.jsx';
 import { refreshUser } from './redux/auth/operations.js';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage.jsx'));
 const SignUpPage = lazy(() => import('./pages/SignUpPage/SignUpPage.jsx'));
 const SignInPage = lazy(() => import('./pages/SignInPage/SignInPage.jsx'));
+const DictionaryPage = lazy(() =>
+  import('./pages/DictionaryPage/DictionaryPage.jsx')
+);
+const RecommendPage = lazy(() =>
+  import('./pages/RecommendPage/RecommendPage.jsx')
+);
+const TrainingPage = lazy(() =>
+  import('./pages/TrainingPage/TrainingPage.jsx')
+);
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 function App() {
@@ -59,6 +67,18 @@ function App() {
           path="/dictionary"
           element={
             <PrivateRoute component={<DictionaryPage />} redirectTo="/login" />
+          }
+        />
+        <Route
+          path="/recommended"
+          element={
+            <PrivateRoute component={<RecommendPage />} redirectTo="/login" />
+          }
+        />
+        <Route
+          path="/training"
+          element={
+            <PrivateRoute component={<TrainingPage />} redirectTo="/login" />
           }
         />
         <Route path="*" element={<NotFoundPage />} />

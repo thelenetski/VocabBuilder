@@ -7,6 +7,7 @@ import { selectTypeModal } from '../../redux/modal/selectors';
 import { modalTypes } from '../../redux/modal/slice';
 import AddWordForm from '../AddWordForm/AddWordForm';
 import EditWordForm from '../EditWordForm/EditWordForm';
+import ModalWellDone from '../ModalWellDone/ModalWellDone';
 
 const MainLayout = ({ children }) => {
   const type = useSelector(selectTypeModal);
@@ -20,6 +21,7 @@ const MainLayout = ({ children }) => {
           <ModalWindow>
             {type === modalTypes.addWord && <AddWordForm />}
             {type === modalTypes.editWord && <EditWordForm />}
+            {type === modalTypes.welldone && <ModalWellDone />}
           </ModalWindow>
         </div>
       </div>

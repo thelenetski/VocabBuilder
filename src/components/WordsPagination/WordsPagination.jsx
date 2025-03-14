@@ -22,6 +22,10 @@ const WordsPagination = () => {
     dispatch(setFilters({ ...filters, page: page + 1 }));
   };
 
+  const plusTenPage = () => {
+    dispatch(setFilters({ ...filters, page: page + 10 }));
+  };
+
   const lastPage = () => {
     dispatch(setFilters({ ...filters, page: totalPages }));
   };
@@ -56,7 +60,14 @@ const WordsPagination = () => {
               {page - 1}
             </button>
           )}
+
           <button className={clsx(css.button, css.currentPage)}>{page}</button>
+          {totalPages > 8 && <button className={css.button}>...</button>}
+          {totalPages > 8 && (
+            <button className={css.button} onClick={plusTenPage}>
+              {page + 9}
+            </button>
+          )}
           {totalPages > 1 && page < totalPages && (
             <button className={css.button} onClick={nextPage}>
               <svg className={clsx(css.rightBtn, css.arrowBtn)}>

@@ -1,0 +1,59 @@
+.wellDoneWrap h4 {
+  text-align: center;
+  font-family: MacPaw Fixel Display;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  letter-spacing: -0.48px;
+  color: var(--light-color);
+  margin-bottom: 32px;
+}
+
+.wellDoneResults {
+  display: flex;
+  gap: 32px;
+  position: relative;
+}
+
+.correct,
+.mistakes {
+  z-index: 10;
+}
+
+.correct h6,
+.mistakes h6 {
+  font-family: MacPaw Fixel Display;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 100%;
+  margin-bottom: 8px;
+  color: #fcfcfc80;
+}
+
+.correct ul,
+.mistakes ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.correct ul li,
+.mistakes ul li {
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: capitalize;
+  color: var(--light-color);
+}
+
+.bookImg {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  z-index: 1;
+}
+
+.bookImg img {
+  width: 152px;
+}

@@ -80,10 +80,24 @@ export const createWord = createAsyncThunk(
   }
 );
 
+export const addWord = createAsyncThunk(
+  'words/addWord',
+  async (id, thunkAPI) => {
+    try {
+      const res = await axios.post(`words/add/${id}`);
+      return res.data;
+    } catch (error) {
+      if (error.response) {
+        return thunkAPI.rejectWithValue(error.response.data);
+      }
+      return thunkAPI.rejectWithValue(error.message || 'Unknown error');
+    }
+  }
+);
+
 export const patchWord = createAsyncThunk(
   'words/patchWord',
   async ({ id, data }, thunkAPI) => {
-    console.log(data);
     try {
       const res = await axios.patch(`words/edit/${id}`, data);
       return res.data;
@@ -99,7 +113,6 @@ export const patchWord = createAsyncThunk(
 export const deleteWord = createAsyncThunk(
   'words/deleteWord',
   async (id, thunkAPI) => {
-    console.log(id);
     try {
       const res = await axios.delete(`words/delete/${id}`);
       return res.data;

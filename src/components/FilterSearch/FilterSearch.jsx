@@ -12,7 +12,7 @@ const FilterSearch = () => {
   const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
 
-  const onSubmit = data => dispatch(setFilters({ ...filters, ...data }));
+  const onSubmit = data => dispatch(setFilters({ ...data }));
 
   const handleDebouncedChange = useCallback(
     debounce(e => {

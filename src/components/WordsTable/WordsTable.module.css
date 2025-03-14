@@ -25,6 +25,7 @@
 }
 
 .cellPadding {
+  max-width: 86px;
   padding-left: 14px;
 }
 
@@ -40,7 +41,8 @@
 
 .tableTD {
   padding: 16px 0;
-
+  hyphens: auto;
+  word-break: break-word;
   text-transform: capitalize;
   border: 1px solid rgba(219, 219, 219, 1);
   background-color: rgba(252, 252, 252, 1);
@@ -87,6 +89,16 @@
   width: 50px;
   display: flex;
   justify-content: center;
+}
+
+.popover button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.popover button svg {
+  stroke: var(--main-color);
 }
 
 .WordPopoverMenuTxt {

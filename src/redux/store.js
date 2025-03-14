@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { modalReducer } from './modal/slice';
 import { wordsReducer } from './words/slice';
+import { trainingReducer } from './training/slice';
 
 // Persisting token field from auth slice to localstorage
 const authPersistConfig = {
@@ -25,6 +26,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     words: wordsReducer,
+    training: trainingReducer,
     modal: modalReducer,
   },
   middleware: getDefaultMiddleware =>

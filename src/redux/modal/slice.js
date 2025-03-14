@@ -5,6 +5,7 @@ export const modalTypes = {
   confirmLogOutUser: 'confirm-logout-user',
   addWord: 'add-word',
   editWord: 'edit-word',
+  welldone: 'well-done',
 };
 
 const modalSlice = createSlice({
@@ -30,6 +31,11 @@ const modalSlice = createSlice({
       state.type = modalTypes.editWord;
       state.content = action.payload;
     },
+    openWellDone(state, action) {
+      state.isOpen = true;
+      state.type = modalTypes.welldone;
+      state.content = action.payload;
+    },
     closeModal(state) {
       state.isOpen = false;
       state.type = null;
@@ -46,6 +52,11 @@ const modalSlice = createSlice({
 });
 
 // Експортуємо генератори екшенів та редюсер
-export const { openConfirmLogOutUser, openAddWord, openEditWord, closeModal } =
-  modalSlice.actions;
+export const {
+  openConfirmLogOutUser,
+  openAddWord,
+  openEditWord,
+  openWellDone,
+  closeModal,
+} = modalSlice.actions;
 export const modalReducer = modalSlice.reducer;

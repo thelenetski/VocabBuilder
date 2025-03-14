@@ -5,7 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectAllWords } from '../../redux/words/selectors';
 import sprite from '/sprite.svg';
 import { useMediaQuery } from 'react-responsive';
@@ -14,6 +14,9 @@ import { Button, Popover } from '@mui/material';
 import { useEffect, useState } from 'react';
 import WordPopoverMenu from '../WordPopoverMenu/WordPopoverMenu';
 import { selectIsOpenModal } from '../../redux/modal/selectors';
+import { useLocation } from 'react-router-dom';
+import { addWord } from '../../redux/words/operations';
+import toast from 'react-hot-toast';
 
 const WordsTable = () => {
   const { results } = useSelector(selectAllWords);
@@ -21,6 +24,8 @@ const WordsTable = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [popoverId, setPopoverId] = useState(null);
   const isModalOpen = useSelector(selectIsOpenModal);
+  const location = useLocation();
+  const dispatch = useDispatch();
 
   const handleClick = (event, id) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -79,9 +84,9 @@ const WordsTable = () => {
           <div className={css.progress}>
             <Circle
               percent={info.getValue()}
-              strokeWidth={10}
+              strokeWidth={12}
               strokeColor="rgba(43, 214, 39, 1)"
-              trailWidth={10}
+              trailWidth={12}
               trailColor="rgba(212, 248, 211, 1)"
             />
           </div>
@@ -91,19 +96,36 @@ const WordsTable = () => {
     columnHelper.accessor('_id', {
       header: () => '',
       cell: info => {
-        return (
-          <div className={css.popover}>
-            <Button
-              aria-describedby={info.getValue()}
-              className={css.popoverBtn}
-              size="small"
-              onClick={event => handleClick(event, info.getValue())}
-              sx={{ p: 0 }}
-            >
-              <span className={css.WordPopoverMenuTxt}>•••</span>
-            </Button>
-          </div>
-        );
+        if (location.pathname === '/dictionary')
+          return (
+            <div className={css.popover}>
+              <Button
+                aria-describedby={info.getValue()}
+                className={css.popoverBtn}
+                size="small"
+                onClick={event => handleClick(event, info.getValue())}
+                sx={{ p: 0 }}
+              >
+                <span className={css.WordPopoverMenuTxt}>•••</span>
+              </Button>
+            </div>
+          );
+        if (location.pathname === '/recommended')
+          return (
+            <div className={css.popover}>
+              <button
+                onClick={() =>
+                  dispatch(addWord(info.getValue())).then(() => {
+                    toast.success('Word added successfully');
+                  })
+                }
+              >
+                <svg>
+                  <use href={sprite + '#arrow-right'}></use>
+                </svg>
+              </button>
+            </div>
+          );
       },
     }),
   ];
@@ -124,7 +146,8 @@ const WordsTable = () => {
   });
 
   return (
-    results && (
+    results &&
+    results.length > 0 && (
       <div className={css.tableWrap}>
         <table>
           <thead>
