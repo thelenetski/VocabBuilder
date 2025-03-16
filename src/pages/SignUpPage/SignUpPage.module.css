@@ -36,13 +36,22 @@
   margin: 0 7px;
 }
 
-@media (min-width: 375px) {
-  .signUpPage {
-  }
-}
-
 @media (min-width: 768px) {
+  .signUpPage {
+    min-height: 100vh;
+    padding: 24px 32px;
+    justify-content: space-between;
+    background: url(/src/assets/images/bg.png) no-repeat;
+    background-position: 100% 100%;
+  }
   .actionsItems {
     display: flex;
+    margin-bottom: 82px;
+  }
+  .actionsItems span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
   }
 }

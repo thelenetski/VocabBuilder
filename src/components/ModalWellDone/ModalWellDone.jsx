@@ -6,7 +6,6 @@ import book2x from '../../assets/images/book@2x.png';
 
 const ModalWellDone = () => {
   const answersResults = useSelector(selectAnswers);
-  console.log(answersResults);
   return (
     <div className={css.wellDoneWrap}>
       <h4>Well done</h4>
@@ -22,9 +21,17 @@ const ModalWellDone = () => {
         <div className={css.mistakes}>
           <h6>Mistakes:</h6>
           <ul>
-            {answersResults.map(item => {
-              return item.isDone === false && <li key={item._id}>{item.en}</li>;
-            })}
+            {answersResults
+              .filter(
+                (value, index, self) =>
+                  self.findIndex(item => item._id === value._id) === index &&
+                  value.isDone === false
+              )
+              .map(item => {
+                return (
+                  item.isDone === false && <li key={item._id}>{item.en}</li>
+                );
+              })}
           </ul>
         </div>
         <div className={css.bookImg}>

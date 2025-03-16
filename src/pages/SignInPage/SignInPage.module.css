@@ -41,7 +41,25 @@
 }
 
 @media (min-width: 768px) {
+  .signInPage {
+    min-height: 100vh;
+    padding: 24px 32px;
+    justify-content: space-between;
+    background: url(/src/assets/images/bg.png) no-repeat;
+    background-position: 100% 100%;
+  }
+  .form {
+    order: 1;
+  }
   .actionsItems {
     display: flex;
+    order: 2;
+    margin-bottom: 82px;
+  }
+  .actionsItems span {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
   }
 }

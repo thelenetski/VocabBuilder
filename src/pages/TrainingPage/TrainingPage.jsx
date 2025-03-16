@@ -4,11 +4,17 @@ import css from './TrainingPage.module.css';
 import { useEffect } from 'react';
 import TrainingRoom from '../../components/TrainingRoom/TrainingRoom';
 import { getTasks } from '../../redux/training/operations';
-import { selectTasks } from '../../redux/training/selectors';
+import {
+  selectTasks,
+  selectTasksLoading,
+} from '../../redux/training/selectors';
+import AddWordModal from '../../components/AddWordModal/AddWordModal';
+import Loader from '../../components/Loader/Loader';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
   const tasks = useSelector(selectTasks);
+  const loading = useSelector(selectTasksLoading);
 
   useEffect(() => {
     dispatch(getTasks());
@@ -17,7 +23,13 @@ const TrainingPage = () => {
   return (
     <div className={css.wrapper}>
       <Header />
-      {tasks?.tasks && <TrainingRoom data={tasks} />}
+      {loading ? (
+        <Loader />
+      ) : tasks?.tasks && tasks?.tasks.length > 0 ? (
+        <TrainingRoom data={tasks} />
+      ) : (
+        <AddWordModal />
+      )}
     </div>
   );
 };

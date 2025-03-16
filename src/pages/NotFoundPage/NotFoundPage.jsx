@@ -1,19 +1,21 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import css from './NotFoundPage.module.css';
 
 const NotFound = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={css.main}>
-      <Link
+      <button
         style={{
           border: '1px solid #ccc',
           padding: '5px 10px',
           borderRadius: '15px',
         }}
-        to={'/'}
+        onClick={() => navigate(-1)}
       >
         Back
-      </Link>
+      </button>
       <h2>Not Found page</h2>
     </div>
   );

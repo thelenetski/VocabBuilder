@@ -5,12 +5,18 @@ import { selectIsOpenModal } from '../../redux/modal/selectors';
 import styles from './ModalWindow.module.css';
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ModalWindow = ({ children }) => {
   const dispatch = useDispatch();
   const isOpen = useSelector(selectIsOpenModal);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const closeModalHandler = () => {
+    if (location.pathname === '/training') {
+      navigate('/dictionary');
+    }
     dispatch(closeModal());
   };
 

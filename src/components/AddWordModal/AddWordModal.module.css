@@ -1,0 +1,65 @@
+.addWordModalWrap {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.addWordModalWrap img {
+  height: 200px;
+}
+
+.title {
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--second-color);
+  margin-top: 34px;
+  margin-bottom: 16px;
+}
+
+.regularTxt {
+  font-family: MacPaw Fixel Display;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--second-color);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 150px;
+}
+
+.addWord {
+  border: none;
+  background: var(--main-color);
+  border-radius: 30px;
+  font-family: MacPaw Fixel Display;
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 24px;
+  padding: 16px 0;
+  color: var(--light-color);
+}
+
+.closeBtn {
+  border: none;
+  background: none;
+  font-family: MacPaw Fixel Display;
+  font-weight: 700;
+  font-size: 16px;
+  text-align: center;
+  line-height: 100%;
+  color: var(--second-color);
+  opacity: 0.5;
+  margin-top: 8px;
+  text-decoration: none;
+}

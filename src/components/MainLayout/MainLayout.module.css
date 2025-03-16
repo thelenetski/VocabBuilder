@@ -1,0 +1,11 @@
+.mainWrapper {
+  max-width: 375px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+  .mainWrapper {
+    max-width: 768px;
+    min-height: 100vh;
+  }
+}

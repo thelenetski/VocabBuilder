@@ -4,6 +4,7 @@
   border-radius: 15px;
   background-color: var(--main-color);
   width: 100%;
+  max-width: 375px;
   height: fit-content;
   margin: 0 16px;
 }

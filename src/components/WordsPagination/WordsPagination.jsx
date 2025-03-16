@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { setFilters } from '../../redux/words/slice';
 
 const WordsPagination = () => {
-  const { page, totalPages } = useSelector(selectAllWords);
+  const { page, results, totalPages } = useSelector(selectAllWords);
   const filters = useSelector(selectFilters);
   const dispatch = useDispatch();
 
@@ -36,7 +36,7 @@ const WordsPagination = () => {
 
   return (
     <div className={css.paginationWrap}>
-      {totalPages >= 1 && (
+      {totalPages >= 1 && results?.length > 0 && (
         <>
           {page > 1 && (
             <>

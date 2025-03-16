@@ -41,7 +41,6 @@ const AddWordForm = () => {
   const categories = useSelector(selectCategories);
 
   const filterHandler = value => {
-    console.log(value);
     if (value === 'verb') {
       setWord({
         ...word,

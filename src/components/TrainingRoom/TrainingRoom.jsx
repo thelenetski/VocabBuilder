@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import css from './TrainingRoom.module.css';
 import sprite from '/sprite.svg';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { sendAnswers } from '../../redux/training/operations';
 import { openWellDone } from '../../redux/modal/slice';
@@ -12,44 +12,47 @@ const TrainingRoom = ({ data }) => {
   const dispatch = useDispatch();
   const [answers, setAnswers] = useState([]);
   const { register, watch, setValue, handleSubmit } = useForm({});
-  // const tasksUA = data && data?.tasks?.filter(item => item.task === 'en');
-  const tasksEN = data && data?.tasks?.filter(item => item.task === 'ua');
-  const [currentTask, setCurrentTask] = useState(tasksEN[0]);
+  const [currentTask, setCurrentTask] = useState(data.tasks[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [save, setSave] = useState(false);
 
-  const nextHandler = () => {
-    if (watch('ua') !== '') {
+  const nextHandler = (notLast = true) => {
+    if (watch('translate') !== '') {
       setAnswers(
         answers.concat({
-          ...tasksEN[currentIndex],
-          ua: watch('ua').toString().toLowerCase().trim(),
-          en: currentTask.en,
+          ...data.tasks[currentIndex],
+          ua:
+            currentTask.task === 'ua'
+              ? watch('translate').toString().toLowerCase().trim()
+              : currentTask.ua,
+          en:
+            currentTask.task === 'en'
+              ? watch('translate').toString().toLowerCase().trim()
+              : currentTask.en,
         })
       );
     }
-
-    setValue('ua', '');
-    setCurrentIndex(currentIndex + 1);
-    setCurrentTask(tasksEN[currentIndex + 1]);
+    if (notLast) {
+      setValue('translate', '');
+      setCurrentIndex(currentIndex + 1);
+      setCurrentTask(data.tasks[currentIndex + 1]);
+    }
   };
 
   const onSubmit = data => {
-    data !== '' &&
-      setAnswers(
-        answers.concat({
-          ...tasksEN[currentIndex],
-          ua: watch('ua').toString().toLowerCase().trim(),
-          en: currentTask.en,
-        })
-      ),
+    data !== '' && nextHandler(false), setSave(true);
+  };
+
+  const percent = Math.round((currentIndex / data.tasks.length) * 100);
+
+  useEffect(() => {
+    if (answers.length > 0 && save === true) {
+      console.log(answers);
       dispatch(sendAnswers(answers))
         .unwrap()
         .then(() => dispatch(openWellDone()));
-  };
-
-  const percent = Math.round((currentIndex / tasksEN.length) * 100);
-
-  console.log(tasksEN);
+    }
+  }, [dispatch, answers]);
 
   return (
     <>
@@ -59,10 +62,10 @@ const TrainingRoom = ({ data }) => {
           <div className={css.roomTask}>
             <h5 className={css.roomTitle}>Введіть переклад</h5>
             <label className={css.langInput}>
-              <input {...register('ua')} />
+              <input {...register('translate')} />
             </label>
             <div className={css.roomFormfooter}>
-              {currentIndex + 1 !== tasksEN.length ? (
+              {currentIndex + 1 !== data.tasks.length ? (
                 <button
                   className={css.nextBtn}
                   type="button"
@@ -77,23 +80,41 @@ const TrainingRoom = ({ data }) => {
                 <div></div>
               )}
               <div className={css.roomFormFooterLang}>
-                <svg className={css.flag}>
-                  <use href={sprite + '#flag-ua'}></use>
-                </svg>
-                <p className={css.regularTxt}>Ukrainian</p>
+                {currentTask.task === 'ua' ? (
+                  <svg className={css.flag}>
+                    <use href={sprite + '#flag-ua'}></use>
+                  </svg>
+                ) : (
+                  <svg className={css.flag}>
+                    <use href={sprite + '#flag-uk'}></use>
+                  </svg>
+                )}
+                <p className={css.regularTxt}>
+                  {currentTask.task === 'ua' ? 'Ukrainian' : 'English'}
+                </p>
               </div>
             </div>
           </div>
 
           <div className={css.roomTask}>
-            <p className={css.taskText}>{currentTask && currentTask.en}</p>
+            <p className={css.taskText}>
+              {(currentTask && currentTask?.en) || currentTask?.ua}
+            </p>
             <div className={css.roomFormfooter}>
               <div></div>
               <div className={css.roomFormFooterLang}>
-                <svg className={css.flag}>
-                  <use href={sprite + '#flag-uk'}></use>
-                </svg>
-                <p className={css.regularTxt}>English</p>
+                {currentTask.task === 'ua' ? (
+                  <svg className={css.flag}>
+                    <use href={sprite + '#flag-uk'}></use>
+                  </svg>
+                ) : (
+                  <svg className={css.flag}>
+                    <use href={sprite + '#flag-ua'}></use>
+                  </svg>
+                )}
+                <p className={css.regularTxt}>
+                  {currentTask.task === 'en' ? 'Ukrainian' : 'English'}
+                </p>
               </div>
             </div>
           </div>

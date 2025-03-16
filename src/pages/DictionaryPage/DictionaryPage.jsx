@@ -9,17 +9,22 @@ import { useEffect, useState } from 'react';
 import { getOwnWords } from '../../redux/words/operations';
 import Loader from '../../components/Loader/Loader';
 import { resetFilters } from '../../redux/words/slice';
+import { useSearchParams } from 'react-router-dom';
+import { openAddWord } from '../../redux/modal/slice';
 
 const DictionaryPage = () => {
   const filters = useSelector(selectFilters);
   const loading = useSelector(selectWordsLoading);
   const [firstLoad, setFirstLoad] = useState(true);
+  const [searchParams] = useSearchParams();
+  const addWord = searchParams.get('addword');
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(resetFilters());
     setFirstLoad(false);
-  }, []);
+    addWord && dispatch(openAddWord());
+  }, [dispatch, addWord]);
 
   useEffect(() => {
     !firstLoad && dispatch(getOwnWords({ ...filters }));

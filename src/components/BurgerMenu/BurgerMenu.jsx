@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import { Transition } from '@headlessui/react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import css from './BurgerMenu.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo } from '../../redux/auth/selectors';
 import sprite from '/sprite.svg';
 import { Link, useLocation } from 'react-router-dom';
 import kids from '../../assets/images/illustration.png';
 import kids2x from '../../assets/images/illustration@2x.png';
 import clsx from 'clsx';
+import { logOut } from '../../redux/auth/operations';
 
 const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
   const user = useSelector(selectUserInfo);
   const location = useLocation();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -39,21 +40,14 @@ const BurgerMenu = () => {
         <div className={css.menuIconFrame}></div>
         <div className={css.menuIconFrame}></div>
       </button>
-      <Transition
-        show={isOpen}
-        enter="transition duration-300"
-        enterFrom="opacity-0 transform -translate-x-full"
-        enterTo="opacity-100 transform translate-x-0"
-        leave="transition duration-300"
-        leaveFrom="opacity-100 transform translate-x-0"
-        leaveTo="opacity-0 transform -translate-x-full"
-      >
+      <AnimatePresence initial={false}>
         <motion.nav
           ref={menuRef}
           className={css.menuWrap}
           initial={{ x: '100%' }}
           animate={{ x: isOpen ? 0 : '100%' }}
-          transition={{ type: 'tween', duration: 0.2 }}
+          exit={{ x: 0 }}
+          transition={{ duration: 0.1 }}
         >
           <div className={css.headWrap}>
             <div className={css.userInfo}>
@@ -93,7 +87,7 @@ const BurgerMenu = () => {
             >
               Training
             </Link>
-            <Link to="/logout">
+            <Link onClick={() => dispatch(logOut())}>
               Log out
               <svg>
                 <use href={sprite + '#arrow-white-right'}></use>
@@ -108,7 +102,7 @@ const BurgerMenu = () => {
             />
           </div>
         </motion.nav>
-      </Transition>
+      </AnimatePresence>
     </>
   );
 };
