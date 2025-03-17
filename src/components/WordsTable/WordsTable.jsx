@@ -134,7 +134,6 @@ const WordsTable = () => {
   ];
 
   if (!isMobile || location.pathname === '/recommended') {
-    columns.splice(-2, 1);
     columns.splice(
       2,
       0,
@@ -143,6 +142,10 @@ const WordsTable = () => {
         cell: info => <div className={css.cellPadding}>{info.getValue()}</div>,
       })
     );
+  }
+
+  if (location.pathname !== '/dictionary') {
+    columns.splice(-2, 1);
   }
 
   const table = useReactTable({
