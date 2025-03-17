@@ -82,6 +82,9 @@ const WordsTable = () => {
       cell: info => {
         return (
           <div className={css.progress}>
+            {!isMobile && (
+              <p style={{ marginRight: '6px' }}>{`${info.getValue()}%`}</p>
+            )}
             <Circle
               percent={info.getValue()}
               strokeWidth={12}
@@ -130,11 +133,14 @@ const WordsTable = () => {
     }),
   ];
 
-  if (!isMobile) {
-    columns.push(
+  if (!isMobile || location.pathname === '/recommended') {
+    columns.splice(-2, 1);
+    columns.splice(
+      2,
+      0,
       columnHelper.accessor('category', {
         header: () => 'Category',
-        cell: info => info.getValue(),
+        cell: info => <div className={css.cellPadding}>{info.getValue()}</div>,
       })
     );
   }

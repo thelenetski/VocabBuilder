@@ -19,15 +19,17 @@ const Dashboard = () => {
   return (
     <div className={css.dashWrap}>
       <FilterPanel />
-      <Statistics />
-      <div className={css.actions}>
-        {location.pathname === '/dictionary' && <AddWordBtn />}
-        <Link className={css.trainLink} to="/training">
-          <span>Train oneself</span>
-          <svg className={css.trainLinkIcon}>
-            <use href={sprite + '#arrow-right'}></use>
-          </svg>
-        </Link>
+      <div className={css.statWrap}>
+        <Statistics />
+        <div className={css.actions}>
+          {location.pathname === '/dictionary' && <AddWordBtn />}
+          <Link className={css.trainLink} to="/training">
+            <span>Train oneself</span>
+            <svg className={css.trainLinkIcon}>
+              <use href={sprite + '#arrow-right'}></use>
+            </svg>
+          </Link>
+        </div>
       </div>
     </div>
   );

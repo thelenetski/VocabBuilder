@@ -41,7 +41,11 @@
   color: var(--second-color);
   border: none;
   background: none;
-  text-transform: capitalize;
+}
+
+.langInput input::first-letter,
+.taskText::first-letter {
+  text-transform: uppercase;
 }
 
 .langInput input:focus {

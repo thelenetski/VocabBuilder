@@ -36,6 +36,9 @@
 }
 
 .iconTH svg {
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
   display: none;
 }
 
@@ -43,9 +46,12 @@
   padding: 16px 0;
   hyphens: auto;
   word-break: break-word;
-  text-transform: capitalize;
   border: 1px solid rgba(219, 219, 219, 1);
   background-color: rgba(252, 252, 252, 1);
+}
+
+.tableTD::first-letter {
+  text-transform: uppercase;
 }
 
 .tableWrap table .tableTD:first-child,
@@ -108,4 +114,33 @@
   line-height: 22.08px;
   text-align: center;
   color: #12141780;
+}
+
+@media screen and (min-width: 768px) {
+  .tableWrap {
+    margin: 0 32px 32px 32px;
+    padding: 18px;
+    background: #ffffff;
+    border-radius: 15px;
+  }
+  .tableTH {
+    font-weight: 500;
+    font-size: 18px;
+  }
+  .iconTH svg {
+    display: block;
+  }
+  .cellPadding {
+    max-width: 128px;
+    min-width: 110px;
+    padding-left: 14px;
+  }
+  .tableTD {
+    font-weight: 500;
+    font-size: 18px;
+    padding: 22px 0;
+  }
+  .tableWrap table tr:last-child .tableTD {
+    border-bottom: 1px solid rgba(219, 219, 219, 1);
+  }
 }

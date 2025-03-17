@@ -2,9 +2,15 @@
   padding: 32px 16px;
 }
 
+.statWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 40px;
+}
+
 .actions {
   display: flex;
-  margin-top: 8px;
   gap: 16px;
 }
 
@@ -25,4 +31,16 @@
 
 .trainLinkIcon {
   stroke: var(--main-color);
+}
+
+@media screen and (min-width: 768px) {
+  .dashWrap {
+    padding: 80px 32px 28px;
+  }
+  .statWrap {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin-top: 28px;
+  }
 }

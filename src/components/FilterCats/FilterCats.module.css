@@ -15,9 +15,10 @@
   align-items: center;
 }
 
-svg {
+.arrowDown {
   width: 20px;
-  height: 20px;
+  height: 15px;
+  color: #1214174f;
 }
 
 .title {
@@ -96,4 +97,10 @@ svg {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media screen and (min-width: 768px) {
+  .filterItemWrap {
+    width: 164px;
+  }
 }

@@ -1,7 +1,6 @@
 .statWrap {
   display: flex;
   align-items: center;
-  margin-top: 14px;
 }
 
 .title {
@@ -17,4 +16,10 @@
   line-height: 27.6px;
   color: var(--second-color);
   margin-left: 8px;
+}
+
+@media screen and (min-width: 768px) {
+  .title {
+    font-size: 16px;
+  }
 }
