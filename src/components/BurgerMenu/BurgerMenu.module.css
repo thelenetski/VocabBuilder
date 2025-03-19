@@ -87,6 +87,7 @@
 }
 
 .linksWrap a {
+  width: fit-content;
   display: flex;
   align-items: center;
   font-weight: 500;
@@ -124,5 +125,8 @@
 @media screen and (min-width: 768px) {
   .menuWrap {
     width: 300px;
+  }
+  .kids {
+    height: 435px;
   }
 }

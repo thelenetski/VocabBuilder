@@ -58,63 +58,75 @@ const TrainingRoom = ({ data }) => {
     <>
       <ProgressBar percent={percent} />
       <div className={css.roomWrap}>
-        <form className={css.roomForm} onSubmit={handleSubmit(onSubmit)}>
-          <div className={css.roomTask}>
-            <h5 className={css.roomTitle}>Введіть переклад</h5>
-            <label className={css.langInput}>
-              <input {...register('translate')} />
-            </label>
-            <div className={css.roomFormfooter}>
-              {currentIndex + 1 !== data.tasks.length ? (
-                <button
-                  className={css.nextBtn}
-                  type="button"
-                  onClick={nextHandler}
-                >
-                  Next
-                  <svg className={css.arrow}>
-                    <use href={sprite + '#arrow-right'}></use>
-                  </svg>
-                </button>
-              ) : (
-                <div></div>
-              )}
-              <div className={css.roomFormFooterLang}>
-                {currentTask.task === 'ua' ? (
-                  <svg className={css.flag}>
-                    <use href={sprite + '#flag-ua'}></use>
-                  </svg>
-                ) : (
-                  <svg className={css.flag}>
-                    <use href={sprite + '#flag-uk'}></use>
-                  </svg>
-                )}
-                <p className={css.regularTxt}>
-                  {currentTask.task === 'ua' ? 'Ukrainian' : 'English'}
-                </p>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={css.roomForm}>
+            <div className={css.roomTask}>
+              <div className={css.roomTaskPadding}>
+                <div className={css.roomTaskLeft}>
+                  <h5 className={css.roomTitle}>Введіть переклад</h5>
+                  <label className={css.langInput}>
+                    <input {...register('translate')} />
+                  </label>
+                  <div className={css.roomFormfooter}>
+                    {currentIndex + 1 !== data.tasks.length ? (
+                      <button
+                        className={css.nextBtn}
+                        type="button"
+                        onClick={nextHandler}
+                      >
+                        Next
+                        <svg className={css.arrow}>
+                          <use href={sprite + '#arrow-right'}></use>
+                        </svg>
+                      </button>
+                    ) : (
+                      <div></div>
+                    )}
+                  </div>
+                </div>
+                <div className={css.roomFormFooterLang}>
+                  <div className={css.roomLang}>
+                    {currentTask.task === 'ua' ? (
+                      <svg className={css.flag}>
+                        <use href={sprite + '#flag-ua'}></use>
+                      </svg>
+                    ) : (
+                      <svg className={css.flag}>
+                        <use href={sprite + '#flag-uk'}></use>
+                      </svg>
+                    )}
+                    <p className={css.regularTxt}>
+                      {currentTask.task === 'ua' ? 'Ukrainian' : 'English'}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className={css.roomTask}>
-            <p className={css.taskText}>
-              {(currentTask && currentTask?.en) || currentTask?.ua}
-            </p>
-            <div className={css.roomFormfooter}>
-              <div></div>
-              <div className={css.roomFormFooterLang}>
-                {currentTask.task === 'ua' ? (
-                  <svg className={css.flag}>
-                    <use href={sprite + '#flag-uk'}></use>
-                  </svg>
-                ) : (
-                  <svg className={css.flag}>
-                    <use href={sprite + '#flag-ua'}></use>
-                  </svg>
-                )}
-                <p className={css.regularTxt}>
-                  {currentTask.task === 'en' ? 'Ukrainian' : 'English'}
+            <div className={css.roomTask}>
+              <div className={css.roomTaskPadding}>
+                <p className={css.taskText}>
+                  {(currentTask && currentTask?.en) || currentTask?.ua}
                 </p>
+                <div className={css.roomFormfooter}>
+                  <div></div>
+                  <div className={css.roomFormFooterLang}>
+                    <div className={css.roomLang}>
+                      {currentTask.task === 'ua' ? (
+                        <svg className={css.flag}>
+                          <use href={sprite + '#flag-uk'}></use>
+                        </svg>
+                      ) : (
+                        <svg className={css.flag}>
+                          <use href={sprite + '#flag-ua'}></use>
+                        </svg>
+                      )}
+                      <p className={css.regularTxt}>
+                        {currentTask.task === 'en' ? 'Ukrainian' : 'English'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

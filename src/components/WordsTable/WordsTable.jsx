@@ -17,6 +17,7 @@ import { selectIsOpenModal } from '../../redux/modal/selectors';
 import { useLocation } from 'react-router-dom';
 import { addWord } from '../../redux/words/operations';
 import toast from 'react-hot-toast';
+import clsx from 'clsx';
 
 const WordsTable = () => {
   const { results } = useSelector(selectAllWords);
@@ -115,7 +116,10 @@ const WordsTable = () => {
           );
         if (location.pathname === '/recommended')
           return (
-            <div className={css.popover}>
+            <div className={clsx(css.popover, css.addWord)}>
+              {!isMobile && (
+                <p className={css.popoverTitle}>Add to dictionary</p>
+              )}
               <button
                 onClick={() =>
                   dispatch(addWord(info.getValue())).then(() => {

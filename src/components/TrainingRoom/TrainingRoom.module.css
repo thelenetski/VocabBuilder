@@ -3,20 +3,31 @@
 }
 
 .roomForm {
-  border-radius: 8px;
   background-color: #fff;
+  border-radius: 8px;
 }
 
-.roomTask {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.roomTaskPadding {
   height: 195px;
+  display: flex;
+  justify-content: space-between;
   padding: 22px;
 }
 
-.roomTask:first-child {
+.roomTask:first-child .roomTaskPadding {
   border-bottom: 1px solid #dbdbdb;
+}
+
+.roomTaskLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.roomLang {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .roomTitle {
@@ -59,8 +70,7 @@
 
 .roomFormFooterLang {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-end;
 }
 
 .regularTxt {
@@ -95,8 +105,8 @@
 .controls {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  height: 150px;
+  margin-top: 116px;
+  background: var(--light-color);
 }
 
 .addBtn {
@@ -123,4 +133,58 @@
   opacity: 0.5;
   margin-top: 8px;
   text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+  .roomWrap {
+    padding: 0 32px;
+    padding-bottom: 100px;
+  }
+  .roomTask {
+    padding: 18px;
+  }
+  .roomTaskPadding {
+    height: 282px;
+    padding: 22px;
+  }
+
+  .roomTitle {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .roomFormFooterLang {
+    align-items: flex-start;
+  }
+  .roomFormFooterLang svg {
+    width: 32px;
+    height: 32px;
+  }
+  .regularTxt {
+    font-size: 16px;
+  }
+  .langInput input,
+  .taskText {
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .controls {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 40px;
+  }
+  .addBtn,
+  .closeBtn {
+    padding: 14px 0;
+    width: 203px;
+  }
+  .closeBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-color);
+    border: 1px solid var(--main-color);
+    border-radius: 30px;
+    margin-top: 0;
+  }
 }

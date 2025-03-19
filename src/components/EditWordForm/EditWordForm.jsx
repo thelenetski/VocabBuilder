@@ -70,34 +70,38 @@ const EditWordForm = () => {
   return (
     <div className={css.EditWordFormWrap}>
       <form className={css.formWrap} onSubmit={handleSubmit(onSubmit)}>
-        <div className={css.langTitle}>
-          <svg className={css.flag}>
-            <use href={sprite + '#flag-ua'}></use>
-          </svg>
-          <p className={css.regularTxt}>Ukrainian</p>
+        <div className={css.langWrap}>
+          <div className={css.langTitle}>
+            <svg className={css.flag}>
+              <use href={sprite + '#flag-ua'}></use>
+            </svg>
+            <p className={css.regularTxt}>Ukrainian</p>
+          </div>
+          <label className={css.langInput}>
+            <input
+              placeholder="Слово"
+              {...register('ua')}
+              onChange={handleDebouncedChangeUa}
+            />
+          </label>
+          {errors.ua && <p className={css.error}>{errors.ua.message}</p>}
         </div>
-        <label className={css.langInput}>
-          <input
-            placeholder="Слово"
-            {...register('ua')}
-            onChange={handleDebouncedChangeUa}
-          />
-        </label>
-        {errors.ua && <p className={css.error}>{errors.ua.message}</p>}
-        <div className={css.langTitle}>
-          <svg className={css.flag}>
-            <use href={sprite + '#flag-uk'}></use>
-          </svg>
-          <p className={css.regularTxt}>English</p>
+        <div className={css.langWrap}>
+          <div className={css.langTitle}>
+            <svg className={css.flag}>
+              <use href={sprite + '#flag-uk'}></use>
+            </svg>
+            <p className={css.regularTxt}>English</p>
+          </div>
+          <label className={css.langInput}>
+            <input
+              placeholder="Word"
+              {...register('en')}
+              onChange={handleDebouncedChangeEn}
+            />
+          </label>
+          {errors.en && <p className={css.error}>{errors.en.message}</p>}
         </div>
-        <label className={css.langInput}>
-          <input
-            placeholder="Word"
-            {...register('en')}
-            onChange={handleDebouncedChangeEn}
-          />
-        </label>
-        {errors.en && <p className={css.error}>{errors.en.message}</p>}
         <div className={css.controls}>
           <button
             type="submit"

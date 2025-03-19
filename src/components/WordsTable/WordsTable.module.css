@@ -94,6 +94,7 @@
 .popover {
   width: 50px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -142,5 +143,16 @@
   }
   .tableWrap table tr:last-child .tableTD {
     border-bottom: 1px solid rgba(219, 219, 219, 1);
+  }
+  .addWord {
+    width: 120px;
+    justify-content: flex-start;
+    margin: 0 14px;
+  }
+  .popoverTitle {
+    font-family: MacPaw Fixel Display;
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--second-color);
   }
 }
