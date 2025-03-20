@@ -1,0 +1,29 @@
+.navWrap {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navWrap a {
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: var(--second-color);
+  text-decoration: none;
+}
+
+.navWrap a:hover {
+  text-decoration: underline;
+}
+
+.navWrap .active {
+  padding: 12px 20px;
+  color: var(--light-color);
+  background-color: var(--main-color);
+  border-radius: 15px;
+}
+
+.navWrap .active:hover {
+  text-decoration: none;
+}

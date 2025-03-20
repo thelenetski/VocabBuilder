@@ -11,6 +11,7 @@ import Loader from '../../components/Loader/Loader';
 import { resetFilters } from '../../redux/words/slice';
 import { useSearchParams } from 'react-router-dom';
 import { openAddWord } from '../../redux/modal/slice';
+import { setSignOut } from '../../redux/auth/slice';
 
 const DictionaryPage = () => {
   const filters = useSelector(selectFilters);
@@ -23,11 +24,19 @@ const DictionaryPage = () => {
   useEffect(() => {
     dispatch(resetFilters());
     setFirstLoad(false);
-    addWord && dispatch(openAddWord());
+    try {
+      addWord && dispatch(openAddWord());
+    } catch {
+      dispatch(setSignOut());
+    }
   }, [dispatch, addWord]);
 
   useEffect(() => {
-    !firstLoad && dispatch(getOwnWords({ ...filters }));
+    try {
+      !firstLoad && dispatch(getOwnWords({ ...filters }));
+    } catch {
+      dispatch(setSignOut());
+    }
   }, [dispatch, filters]);
 
   return (

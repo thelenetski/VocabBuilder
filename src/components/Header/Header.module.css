@@ -39,6 +39,28 @@
   color: rgba(252, 252, 252, 0.7);
 }
 
+.logOutLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: MacPaw Fixel Display;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  color: var(--second-color);
+}
+
+.logOutLink svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--second-color);
+}
+
+.logOutLink:hover {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 375px) {
   .userAccountWrap p {
     max-width: 80px;
@@ -61,5 +83,15 @@
   .userAvatar {
     width: 24px;
     height: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .userAccountWrap {
+    gap: 10;
+  }
+  .avatar {
+    margin: 0;
+    margin-right: 6px;
   }
 }

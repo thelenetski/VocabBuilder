@@ -101,6 +101,9 @@
 
 @media screen and (min-width: 768px) {
   .filterItemWrap {
-    width: 164px;
+    min-width: 164px;
+  }
+  .radioWrap {
+    margin-top: 0;
   }
 }

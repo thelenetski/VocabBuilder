@@ -20,6 +20,7 @@
   display: none;
   justify-content: center;
   align-items: center;
+  order: 2;
   margin-top: 16px;
 }
 
@@ -53,5 +54,29 @@
     font-size: 16px;
     line-height: 24px;
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .signUpPage {
+    padding: 24px 100px;
+    max-height: 100vh;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    overflow: hidden;
+  }
+  .kids {
+    order: 2;
+    width: auto;
+    margin-top: 155px;
+  }
+  .kids img {
+    width: 498px;
+    margin-top: 0;
+  }
+  .actionsItems {
+    width: auto;
+    position: relative;
+    top: -15px;
   }
 }

@@ -7,10 +7,12 @@ import { useMediaQuery } from 'react-responsive';
 
 const SignInPage = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isDesktop = useMediaQuery({ minWidth: 1440 });
+
   return (
     <div className={css.signInPage}>
       <Logo type={'black'} />
-      {isMobile && (
+      {(isMobile || isDesktop) && (
         <div className={css.kids}>
           <img
             src={kids}

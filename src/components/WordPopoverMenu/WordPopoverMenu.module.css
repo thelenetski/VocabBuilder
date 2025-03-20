@@ -18,7 +18,21 @@
   line-height: 19.32px;
 }
 
+.wordPopMenuWrap button:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .wordPopMenuWrap svg {
   width: 16px;
   height: 16px;
+}
+
+@media screen and (min-width: 1440px) {
+  .wordPopMenuWrap {
+    gap: 12px;
+  }
+  .wordPopMenuWrap button {
+    font-size: 16px;
+  }
 }

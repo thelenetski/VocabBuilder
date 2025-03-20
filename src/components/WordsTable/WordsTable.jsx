@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 import WordPopoverMenu from '../WordPopoverMenu/WordPopoverMenu';
 import { selectIsOpenModal } from '../../redux/modal/selectors';
 import { useLocation } from 'react-router-dom';
-import { addWord } from '../../redux/words/operations';
+import { addWord, getStatistics } from '../../redux/words/operations';
 import toast from 'react-hot-toast';
 import clsx from 'clsx';
 
@@ -124,6 +124,7 @@ const WordsTable = () => {
                 onClick={() =>
                   dispatch(addWord(info.getValue())).then(() => {
                     toast.success('Word added successfully');
+                    dispatch(getStatistics());
                   })
                 }
               >

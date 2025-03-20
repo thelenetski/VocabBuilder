@@ -12,6 +12,11 @@
   padding: 0;
 }
 
+.addBtn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .plus {
   width: 20px;
   height: 20px;

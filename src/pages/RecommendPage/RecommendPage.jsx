@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react';
 import { getAllWords } from '../../redux/words/operations';
 import Loader from '../../components/Loader/Loader';
 import { resetFilters } from '../../redux/words/slice';
+import { setSignOut } from '../../redux/auth/slice';
 
 const RecommendPage = () => {
   const filters = useSelector(selectFilters);
@@ -22,7 +23,11 @@ const RecommendPage = () => {
   }, []);
 
   useEffect(() => {
-    !firstLoad && dispatch(getAllWords({ ...filters }));
+    try {
+      !firstLoad && dispatch(getAllWords({ ...filters }));
+    } catch {
+      dispatch(setSignOut());
+    }
   }, [dispatch, filters]);
 
   return (

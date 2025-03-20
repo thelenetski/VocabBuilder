@@ -29,6 +29,11 @@
   text-decoration: none;
 }
 
+.trainLink:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .trainLinkIcon {
   stroke: var(--main-color);
 }
@@ -42,5 +47,13 @@
     align-items: center;
     gap: 16px;
     margin-top: 28px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .dashWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }

@@ -19,6 +19,11 @@ const authSlice = createSlice({
       signIn: false,
     },
   },
+  redusers: {
+    setSignOut: state => {
+      state.isSignedIn = false;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(signUp.pending, state => {
@@ -59,5 +64,7 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { setSignOut } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

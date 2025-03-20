@@ -127,14 +127,15 @@
   .tableTH {
     font-weight: 500;
     font-size: 18px;
+    padding: 22px 0 22px 22px;
   }
   .iconTH svg {
     display: block;
   }
   .cellPadding {
-    max-width: 128px;
+    max-width: 100%;
     min-width: 110px;
-    padding-left: 14px;
+    padding: 0 22px;
   }
   .tableTD {
     font-weight: 500;
@@ -154,5 +155,28 @@
     font-weight: 500;
     font-size: 14px;
     color: var(--second-color);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .tableTH,
+  .tableTD {
+    font-size: 20px;
+  }
+  .iconTH svg {
+    width: 32px;
+    height: 32px;
+  }
+  .progress {
+    width: 105px;
+    justify-content: space-between;
+    padding-left: 22px;
+  }
+  .tableWrap table .tableTD:last-child,
+  .tableWrap table .tableTH:last-child {
+    width: 136px;
+  }
+  .popover {
+    width: 100%;
   }
 }

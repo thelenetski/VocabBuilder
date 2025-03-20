@@ -177,7 +177,15 @@
   .closeBtn {
     padding: 14px 0;
     width: 203px;
+    transition: 0.3s;
   }
+
+  .addBtn:hover,
+  .closeBtn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
   .closeBtn {
     display: flex;
     justify-content: center;
@@ -186,5 +194,6 @@
     border: 1px solid var(--main-color);
     border-radius: 30px;
     margin-top: 0;
+    opacity: 1;
   }
 }

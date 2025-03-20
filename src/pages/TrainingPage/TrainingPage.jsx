@@ -10,6 +10,7 @@ import {
 } from '../../redux/training/selectors';
 import AddWordModal from '../../components/AddWordModal/AddWordModal';
 import Loader from '../../components/Loader/Loader';
+import { setSignOut } from '../../redux/auth/slice';
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,11 @@ const TrainingPage = () => {
   const loading = useSelector(selectTasksLoading);
 
   useEffect(() => {
-    dispatch(getTasks());
+    try {
+      dispatch(getTasks());
+    } catch {
+      dispatch(setSignOut());
+    }
   }, [dispatch]);
 
   return (

@@ -62,3 +62,38 @@
 .bookImg img {
   width: 152px;
 }
+
+@media screen and (min-width: 768px) {
+  .wellDoneWrap {
+    width: 400px;
+  }
+  .wellDoneWrap h4 {
+    font-size: 40px;
+    line-height: 48px;
+    margin-bottom: 28px;
+  }
+  .correct h6,
+  .mistakes h6 {
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .wellDoneResults {
+    gap: 64px;
+  }
+  .correct ul,
+  .mistakes ul {
+    gap: 8px;
+  }
+  .correct ul li,
+  .mistakes ul li {
+    font-size: 20px;
+    line-height: 100%;
+  }
+  .bookImg {
+    bottom: -48px;
+    right: -58px;
+  }
+  .bookImg img {
+    width: 212px;
+  }
+}
