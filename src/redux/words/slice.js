@@ -53,7 +53,6 @@ const wordsSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllWords.rejected, handleRejected)
-      .addCase(getStatistics.pending, handlePending)
       .addCase(getStatistics.fulfilled, (state, action) => {
         state.stats = action.payload;
         state.loading = false;
