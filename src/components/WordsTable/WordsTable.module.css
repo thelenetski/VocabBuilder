@@ -109,7 +109,7 @@
   stroke: var(--main-color);
 }
 
-.popover:hover {
+.popover:hover button {
   cursor: pointer;
   text-decoration: underline;
 }
