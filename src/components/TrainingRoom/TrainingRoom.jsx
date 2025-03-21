@@ -47,7 +47,6 @@ const TrainingRoom = ({ data }) => {
 
   useEffect(() => {
     if (answers.length > 0 && save === true) {
-      console.log(answers);
       dispatch(sendAnswers(answers))
         .unwrap()
         .then(() => dispatch(openWellDone()));

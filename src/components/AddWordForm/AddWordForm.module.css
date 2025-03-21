@@ -37,6 +37,10 @@
   position: relative;
 }
 
+.filterItemWrap:hover {
+  cursor: pointer;
+}
+
 .filterList {
   width: 100%;
   display: flex;
@@ -102,6 +106,7 @@ svg {
 .langWrap {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
 }
 
@@ -134,6 +139,15 @@ input[type='radio']:checked::before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.irregularTxtWarn {
+  font-family: MacPaw Fixel Display;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 12px;
+  margin-top: -8px;
+  color: var(--light-color);
 }
 
 .langTitle {
@@ -203,6 +217,7 @@ input[type='radio']:checked::before {
   line-height: 24px;
   border-radius: 30px;
   margin-top: 16px;
+  transition: 0.5s;
 }
 
 .closeBtn {
@@ -218,9 +233,18 @@ input[type='radio']:checked::before {
   border-radius: 30px;
   margin-top: 16px;
   color: var(--light-color);
+  transition: 0.5s;
+}
+
+.addBtn:hover,
+.closeBtn:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .error {
+  width: 100%;
+  margin-top: 5px;
   color: var(--error-color);
 }
 
@@ -239,10 +263,21 @@ input[type='radio']:checked::before {
   .filterItemWrap {
     width: 204px;
   }
+  .irregularTxtWarn {
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: -8px;
+  }
+  .radioWrap {
+    gap: 18px;
+  }
   .langWrap {
     flex-direction: row-reverse;
     justify-content: space-between;
     margin-top: 30px;
+  }
+  .noMarg {
+    margin-top: 0;
   }
   .langTitle {
     width: 114px;

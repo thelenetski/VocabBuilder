@@ -46,8 +46,8 @@
     min-height: 100vh;
     padding: 24px 32px;
     justify-content: space-between;
-    background: url(/src/assets/images/bg.png) no-repeat;
-    background-position: 100% 100%;
+    position: relative;
+    z-index: 10;
   }
   .form {
     order: 1;

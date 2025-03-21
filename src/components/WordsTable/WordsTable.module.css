@@ -99,6 +99,7 @@
 }
 
 .popover button {
+  width: 100%;
   border: none;
   background: none;
   padding: 0;
@@ -106,6 +107,11 @@
 
 .popover button svg {
   stroke: var(--main-color);
+}
+
+.popover:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .WordPopoverMenuTxt {
@@ -156,6 +162,9 @@
     font-size: 14px;
     color: var(--second-color);
   }
+  .popover .addWordBtn {
+    text-align: left;
+  }
 }
 
 @media screen and (min-width: 1440px) {
@@ -178,5 +187,16 @@
   }
   .popover {
     width: 100%;
+  }
+  .popoverTitle {
+    font-size: 16px;
+  }
+  .addWord {
+    width: 165px;
+    justify-content: space-between;
+  }
+  .popover .addWordBtn {
+    display: flex;
+    justify-content: space-between;
   }
 }

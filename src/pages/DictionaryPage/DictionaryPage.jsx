@@ -4,7 +4,11 @@ import Dashboard from '../../components/Dashboard/Dashboard ';
 import WordsTable from '../../components/WordsTable/WordsTable';
 import WordsPagination from '../../components/WordsPagination/WordsPagination';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilters, selectWordsLoading } from '../../redux/words/selectors';
+import {
+  selectAllWords,
+  selectFilters,
+  selectWordsLoading,
+} from '../../redux/words/selectors';
 import { useEffect, useState } from 'react';
 import { getOwnWords } from '../../redux/words/operations';
 import Loader from '../../components/Loader/Loader';
@@ -15,6 +19,7 @@ import { setSignOut } from '../../redux/auth/slice';
 
 const DictionaryPage = () => {
   const filters = useSelector(selectFilters);
+  const { results } = useSelector(selectAllWords);
   const loading = useSelector(selectWordsLoading);
   const [firstLoad, setFirstLoad] = useState(true);
   const [searchParams] = useSearchParams();
@@ -47,7 +52,15 @@ const DictionaryPage = () => {
         <Loader />
       ) : (
         <>
-          <WordsTable />
+          {results?.length > 0 ? (
+            <WordsTable />
+          ) : (
+            <p className={css.noWordsTxt}>
+              {!filters?.keyword || filters.keyword === ''
+                ? 'Your dictionary is empty :('
+                : 'No words found'}
+            </p>
+          )}
           <WordsPagination />
         </>
       )}

@@ -13,9 +13,17 @@ const ModalWellDone = () => {
         <div className={css.correct}>
           <h6>Сorrect answers:</h6>
           <ul>
-            {answersResults.map(item => {
-              return item.isDone === true && <li key={item._id}>{item.en}</li>;
-            })}
+            {answersResults
+              .filter(
+                (value, index, self) =>
+                  self.findIndex(item => item._id === value._id) === index &&
+                  value.isDone === true
+              )
+              .map(item => {
+                return (
+                  item.isDone === true && <li key={item._id}>{item.en}</li>
+                );
+              })}
           </ul>
         </div>
         <div className={css.mistakes}>

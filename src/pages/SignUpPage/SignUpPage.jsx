@@ -10,7 +10,7 @@ const SignUpPage = () => {
   const isDesktop = useMediaQuery({ minWidth: 1440 });
 
   return (
-    <main className={css.signUpPage}>
+    <div className={css.signUpPage}>
       <Logo type={'black'} />
       {(isMobile || isDesktop) && (
         <div className={css.kids}>
@@ -28,7 +28,7 @@ const SignUpPage = () => {
         <span>Progress</span>
       </div>
       <SignUpForm />
-    </main>
+    </div>
   );
 };
 

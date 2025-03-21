@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.filterItemWrap:hover {
+  cursor: pointer;
+}
+
 .filterList {
   width: 100%;
   display: flex;
@@ -18,7 +22,7 @@
 .arrowDown {
   width: 20px;
   height: 15px;
-  color: #1214174f;
+  color: #121417;
 }
 
 .title {

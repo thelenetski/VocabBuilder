@@ -197,3 +197,32 @@
     opacity: 1;
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .roomForm {
+    display: flex;
+  }
+  .roomTask {
+    width: 50%;
+  }
+  .roomTask:first-child {
+    padding-right: 0;
+  }
+  .roomTask:last-child {
+    padding-left: 0;
+  }
+  .roomTask:first-child .roomTaskPadding {
+    border-bottom: none;
+    border-right: 1px solid #dbdbdb;
+    border-radius: 8px 0 0 8px;
+  }
+  .roomTask:last-child .roomTaskPadding {
+    border-radius: 0 8px 8px 0;
+  }
+  .roomTaskPadding {
+    background-color: rgba(252, 252, 252, 1);
+  }
+  .controls {
+    margin-top: 80px;
+  }
+}

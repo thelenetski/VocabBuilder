@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './WordPopoverMenu.module.css';
 import sprite from '/sprite.svg';
 import { openEditWord } from '../../redux/modal/slice';
-import { deleteWord } from '../../redux/words/operations';
+import { deleteWord, getOwnWords } from '../../redux/words/operations';
 import toast from 'react-hot-toast';
 import { selectAllWords } from '../../redux/words/selectors';
 
@@ -20,6 +20,7 @@ const WordPopoverMenu = ({ id }) => {
       .unwrap()
       .then(() => {
         toast.success('Word deleted successfully');
+        dispatch(getOwnWords({ page: 1 }));
       });
   };
 

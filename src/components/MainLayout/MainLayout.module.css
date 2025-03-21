@@ -8,6 +8,13 @@
     max-width: 768px;
     min-height: 100vh;
   }
+  .bg {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    height: 466px;
+    z-index: 1;
+  }
 }
 
 @media screen and (min-width: 1440px) {

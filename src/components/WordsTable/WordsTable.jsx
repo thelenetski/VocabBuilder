@@ -117,9 +117,6 @@ const WordsTable = () => {
         if (location.pathname === '/recommended')
           return (
             <div className={clsx(css.popover, css.addWord)}>
-              {!isMobile && (
-                <p className={css.popoverTitle}>Add to dictionary</p>
-              )}
               <button
                 onClick={() =>
                   dispatch(addWord(info.getValue())).then(() => {
@@ -127,7 +124,11 @@ const WordsTable = () => {
                     dispatch(getStatistics());
                   })
                 }
+                className={css.addWordBtn}
               >
+                {!isMobile && (
+                  <p className={css.popoverTitle}>Add to dictionary</p>
+                )}
                 <svg>
                   <use href={sprite + '#arrow-right'}></use>
                 </svg>

@@ -11,7 +11,7 @@ const Statistics = () => {
 
   useEffect(() => {
     dispatch(getStatistics());
-  }, [dispatch, words]);
+  }, [dispatch, words.results]);
 
   return (
     <div className={css.statWrap}>

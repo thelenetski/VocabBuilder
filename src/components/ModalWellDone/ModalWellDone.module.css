@@ -97,3 +97,9 @@
     width: 212px;
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .bookImg {
+    bottom: -27px;
+  }
+}

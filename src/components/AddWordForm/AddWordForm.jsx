@@ -10,6 +10,7 @@ import { closeModal } from '../../redux/modal/slice';
 import toast from 'react-hot-toast';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import clsx from 'clsx';
 
 const schema = yup.object().shape({
   ua: yup
@@ -60,10 +61,15 @@ const AddWordForm = () => {
   };
 
   const onSubmit = data => setWord({ ...word, ...data });
+
   const addSubmit = () => {
     const init = async () => {
       try {
-        await dispatch(createWord(word));
+        await dispatch(createWord(word))
+          .unwrap()
+          .catch(e => {
+            toast.error(e.message);
+          });
         await dispatch(closeModal());
       } catch (e) {
         toast.error(e.message);
@@ -127,11 +133,7 @@ const AddWordForm = () => {
                   type="radio"
                   value="false"
                   {...register('isIrregular')}
-                  onChange={e =>
-                    handleSubmit(() =>
-                      onSubmit({ isIrregular: e.target.value })
-                    )()
-                  }
+                  onChange={e => onSubmit({ isIrregular: e.target.value })}
                 />
                 Regular
               </label>
@@ -141,14 +143,16 @@ const AddWordForm = () => {
                   type="radio"
                   value="true"
                   {...register('isIrregular')}
-                  onChange={e =>
-                    handleSubmit(() =>
-                      onSubmit({ isIrregular: e.target.value })
-                    )()
-                  }
+                  onChange={e => onSubmit({ isIrregular: e.target.value })}
                 />
                 Irregular
               </label>
+              {word.isIrregular === 'true' && (
+                <p className={css.irregularTxtWarn}>
+                  Such data must be entered in the format I form-II form-III
+                  form.
+                </p>
+              )}
             </>
           )}
           <div className={css.langWrap}>
@@ -167,7 +171,7 @@ const AddWordForm = () => {
             </label>
             {errors.ua && <p className={css.error}>{errors.ua.message}</p>}
           </div>
-          <div className={css.langWrap}>
+          <div className={clsx(css.langWrap, css.noMarg)}>
             <div className={css.langTitle}>
               <svg className={css.flag}>
                 <use href={sprite + '#flag-uk'}></use>

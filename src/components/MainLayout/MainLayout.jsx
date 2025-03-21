@@ -8,10 +8,15 @@ import { modalTypes } from '../../redux/modal/slice';
 import AddWordForm from '../AddWordForm/AddWordForm';
 import EditWordForm from '../EditWordForm/EditWordForm';
 import ModalWellDone from '../ModalWellDone/ModalWellDone';
+import bg from '../../assets/images/bg.png';
 import css from './MainLayout.module.css';
+import { useLocation } from 'react-router-dom';
+import { useMediaQuery } from 'react-responsive';
 
 const MainLayout = ({ children }) => {
   const type = useSelector(selectTypeModal);
+  const location = useLocation();
+  const isMobile = useMediaQuery({ maxWidth: 767 });
 
   return (
     <main className={css.mainWrapper}>
@@ -22,6 +27,12 @@ const MainLayout = ({ children }) => {
         {type === modalTypes.editWord && <EditWordForm />}
         {type === modalTypes.welldone && <ModalWellDone />}
       </ModalWindow>
+      {(location.pathname === '/login' || location.pathname === '/register') &&
+        !isMobile && (
+          <div className={css.bg}>
+            <img src={bg} alt="bg illustration" />
+          </div>
+        )}
     </main>
   );
 };
