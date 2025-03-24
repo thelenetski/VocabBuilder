@@ -7,16 +7,53 @@ import { sendAnswers } from '../../redux/training/operations';
 import { openWellDone } from '../../redux/modal/slice';
 import ProgressBar from '../ProgressBar/ProgressBar';
 import { Link } from 'react-router-dom';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const schemaUA = yup.object().shape({
+  translate: yup
+    .string()
+    .transform(value => (value === '' ? null : value))
+    .nullable()
+    .notRequired()
+    .matches(
+      /^(?![A-Za-z])[А-ЯІЄЇҐґа-яієїʼ\s]+$/u,
+      'Please enter a valid word'
+    ),
+});
+
+const schemaEN = yup.object().shape({
+  translate: yup
+    .string()
+    .transform(value => (value === '' ? null : value))
+    .nullable()
+    .notRequired()
+    .matches(/\b[A-Za-z'-]+(?:\s+[A-Za-z'-]+)*\b/, 'Please enter a valid word'),
+});
 
 const TrainingRoom = ({ data }) => {
   const dispatch = useDispatch();
   const [answers, setAnswers] = useState([]);
-  const { register, watch, setValue, handleSubmit } = useForm({});
   const [currentTask, setCurrentTask] = useState(data.tasks[0]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [save, setSave] = useState(false);
+  const {
+    register,
+    watch,
+    setValue,
+    handleSubmit,
+    trigger,
+    setError,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(currentTask.task === 'ua' ? schemaUA : schemaEN),
+  });
 
-  const nextHandler = (notLast = true) => {
+  const nextHandler = async (notLast = true) => {
+    const isValid = await trigger('translate');
+
+    if (!isValid) return;
+
     if (watch('translate') !== '') {
       setAnswers(
         answers.concat({
@@ -40,7 +77,16 @@ const TrainingRoom = ({ data }) => {
   };
 
   const onSubmit = data => {
-    data !== '' && nextHandler(false), setSave(true);
+    if (!data.translate?.trim()) {
+      setError('translate', {
+        type: 'manual',
+        message: 'Field is required',
+      });
+      return;
+    }
+
+    nextHandler(false);
+    setSave(true);
   };
 
   const percent = Math.round((currentIndex / data.tasks.length) * 100);
@@ -66,6 +112,9 @@ const TrainingRoom = ({ data }) => {
                   <label className={css.langInput}>
                     <input {...register('translate')} />
                   </label>
+                  {errors.translate && (
+                    <p className={css.error}>{errors.translate.message}</p>
+                  )}
                   <div className={css.roomFormfooter}>
                     {currentIndex + 1 !== data.tasks.length ? (
                       <button

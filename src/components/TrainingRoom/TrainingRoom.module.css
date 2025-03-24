@@ -63,6 +63,11 @@
   outline: none;
 }
 
+.error {
+  width: 100%;
+  color: var(--error-color);
+}
+
 .roomFormfooter {
   display: flex;
   justify-content: space-between;
@@ -94,6 +99,11 @@
   line-height: 24px;
   color: var(--second-color);
   opacity: 0.5;
+}
+
+.nextBtn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .arrow {
