@@ -19,7 +19,7 @@ const authSlice = createSlice({
       signIn: false,
     },
   },
-  redusers: {
+  reducers: {
     setSignOut: state => {
       state.isSignedIn = false;
     },
